@@ -1,0 +1,2923 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vademécum de Antibióticos — Guia Clínico</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B3A5C'/%3E%3Cg transform='rotate(-45 32 32)'%3E%3Crect x='17' y='24' width='30' height='16' rx='8' fill='none' stroke='white' stroke-width='3'/%3E%3Crect x='17' y='24' width='15' height='16' rx='8 0 0 8' fill='white'/%3E%3Cline x1='32' y1='24' x2='32' y2='40' stroke='%231B3A5C' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root {
+  --navy: #1B3A5C;
+  --blue: #2E75B6;
+  --teal: #1F7A8C;
+  --green: #1A6B3C;
+  --red: #C0392B;
+  --orange: #D35400;
+  --purple: #6C3483;
+  --gray: #4A4A4A;
+  --light-blue: #D6E4F0;
+  --light-green: #D5F0E0;
+  --light-red: #FDECEA;
+  --light-gray: #F5F5F5;
+  --yellow: #FFF8DC;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --border: #dee2e6;
+  --table-odd: #f8f9fa;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.6; color: var(--text); background: #f4f6f9; }
+
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+/* COVER */
+.cover { background: var(--navy); color: white; padding: 40px; border-radius: 12px; margin-bottom: 24px; text-align: center; }
+.cover h1 { font-size: 32px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+.cover .subtitle { font-size: 18px; opacity: 0.85; margin-bottom: 6px; }
+.cover .sub2 { font-size: 14px; opacity: 0.65; margin-bottom: 24px; }
+.cover .legend { background: rgba(255,255,255,0.12); border-radius: 8px; padding: 14px 20px; display: inline-block; font-size: 13px; }
+.cover .legend span { margin: 0 12px; }
+
+/* NAVIGATION */
+.nav { background: white; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; border: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; }
+.nav a { text-decoration: none; color: var(--blue); font-size: 12px; font-weight: 600; padding: 5px 10px; border: 1px solid var(--light-blue); border-radius: 20px; white-space: nowrap; transition: background 0.15s; }
+.nav a:hover { background: var(--light-blue); }
+
+/* SECTION HEADERS */
+.section-header { 
+  padding: 14px 20px; 
+  border-radius: 10px 10px 0 0; 
+  margin-top: 32px; 
+  margin-bottom: 0; 
+  cursor: pointer; 
+  user-select: none; 
+  position: relative; 
+  transition: border-radius 0.2s; 
+}
+.section-header:hover { filter: brightness(1.1); }
+.section-header.collapsed { border-radius: 10px; margin-bottom: 16px; }
+.section-header h2 { 
+  font-size: 18px; 
+  font-weight: 700; 
+  color: white; 
+  letter-spacing: 0.5px; 
+  display: flex; 
+  align-items: center; 
+  width: 100%;
+  gap: 10px; 
+}
+.section-header .collapse-icon { 
+  display: inline-flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 20px; 
+  height: 20px; 
+  font-size: 12px; 
+  transition: transform 0.2s ease;
+  opacity: 0.8;
+}
+.section-header.collapsed .collapse-icon { transform: rotate(-90deg); }
+.section-header.navy { background: var(--navy); }
+.section-header.blue { background: var(--blue); }
+.section-header.teal { background: var(--teal); }
+.section-header.purple { background: var(--purple); }
+
+.section-intro { background: #f0f4f8; border-left: 4px solid var(--blue); padding: 10px 16px; font-size: 13px; font-style: italic; color: #555; margin-bottom: 16px; }
+
+/* DRUG CARD */
+.drug-card { background: white; border: 1px solid var(--border); border-radius: 0 0 10px 10px; margin-bottom: 24px; overflow: hidden; }
+.drug-card + .drug-card { border-radius: 10px; margin-top: 8px; }
+.drug-header { padding: 12px 20px; border-left: 5px solid var(--blue); background: var(--light-blue); display: flex; align-items: center; gap: 8px; }
+.drug-header.common { border-left-color: var(--green); background: var(--light-green); }
+.drug-header h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-right: auto; }
+.drug-header .badge-common { font-size: 11px; background: var(--green); color: white; padding: 2px 8px; border-radius: 12px; font-weight: 700; white-space: nowrap; }
+
+.drug-body { padding: 0; }
+.drug-section { padding: 10px 20px; border-bottom: 1px solid #f0f0f0; display: grid; grid-template-columns: 160px 1fr; gap: 8px; align-items: start; }
+.drug-section:last-child { border-bottom: none; }
+.drug-section-label { font-size: 12px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: 0.5px; padding-top: 2px; }
+.drug-section-content { font-size: 13px; color: var(--text); }
+.drug-section-content ul { padding-left: 16px; }
+.drug-section-content li { margin-bottom: 3px; }
+.drug-section-content li.danger { color: var(--red); font-weight: 600; }
+.drug-section-content li.warning { color: var(--orange); }
+.drug-section-content li.good { color: var(--green); }
+
+/* DOSAGE TABLE */
+.dose-table-wrap { padding: 8px 20px 12px; }
+.dose-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.dose-table th { background: var(--blue); color: white; padding: 7px 10px; text-align: left; font-weight: 600; }
+.dose-table th:first-child { border-radius: 4px 0 0 0; }
+.dose-table th:last-child { border-radius: 0 4px 0 0; }
+.dose-table td { padding: 6px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+.dose-table tr:nth-child(odd) td { background: var(--table-odd); }
+.dose-table tr:hover td { background: #e8f0fb; }
+
+/* TIP BOX */
+.tip-box { margin: 8px 20px 4px; background: #e8f6f9; border: 1px solid var(--teal); border-left: 4px solid var(--teal); border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #1a4a55; }
+.tip-box strong { color: var(--teal); }
+.alert-box { margin: 8px 20px 4px; background: var(--light-red); border: 1px solid var(--red); border-left: 4px solid var(--red); border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #7b1a1a; }
+.alert-box strong { color: var(--red); }
+.warn-box { margin: 8px 20px 4px; background: var(--yellow); border: 1px solid #c9a227; border-left: 4px solid #c9a227; border-radius: 6px; padding: 10px 14px; font-size: 13px; color: #5a4a00; }
+
+/* QUICK REF TABLE */
+.quick-ref-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.quick-ref-table th { background: var(--navy); color: white; padding: 9px 12px; text-align: left; font-weight: 600; }
+.quick-ref-table td { padding: 7px 12px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+.quick-ref-table tr:nth-child(odd) td { background: #f8f9fa; }
+.quick-ref-table tr:hover td { background: var(--light-blue); }
+.quick-ref-table td:first-child { font-weight: 600; color: var(--navy); }
+.quick-ref-table td:nth-child(2) { color: var(--green); font-weight: 600; }
+.quick-ref-table td:nth-child(3) { color: #555; }
+
+/* PRINT */
+@media print {
+  body { background: white; font-size: 11px; }
+  .container { max-width: 100%; padding: 0; }
+  .nav { display: none; }
+  .drug-card { page-break-inside: avoid; }
+  .section-header { page-break-after: avoid; }
+}
+@media (max-width: 700px) {
+  .drug-section { grid-template-columns: 1fr; }
+  .drug-section-label { margin-bottom: 2px; }
+  .dose-table { font-size: 11px; }
+  .cover h1 { font-size: 22px; }
+}
+
+  /* ── EDIT MODE ── */
+  body.edit-mode [data-editable] {
+    outline: 1.5px dashed #2E75B6;
+    outline-offset: 2px;
+    border-radius: 3px;
+    cursor: text;
+    min-height: 1em;
+    transition: background 0.1s;
+  }
+  body.edit-mode [data-editable]:hover { background: rgba(46,117,182,0.06); }
+  body.edit-mode [data-editable]:focus { outline: 2px solid #2E75B6; background: rgba(46,117,182,0.04); }
+  #edit-toolbar {
+    position: sticky; top: 0; z-index: 999;
+    background: #1B3A5C; color: white;
+    padding: 8px 20px; display: flex; align-items: center; gap: 12px;
+    font-size: 13px; font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  #edit-toolbar button {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    color: white; padding: 5px 14px; border-radius: 6px; cursor: pointer;
+    font-size: 12px; font-weight: 600; transition: background 0.15s;
+  }
+  #edit-toolbar button:hover { background: rgba(255,255,255,0.25); }
+  #edit-toolbar button.active { background: #2E75B6; border-color: #2E75B6; }
+  #edit-toolbar .sep { opacity: 0.3; }
+  #edit-toolbar .status { margin-left: auto; font-size: 11px; opacity: 0.7; }
+  #saved-flash {
+    display: none; background: #1A6B3C; color: white;
+    padding: 3px 10px; border-radius: 4px; font-size: 11px;
+  }
+
+  /* ── SEARCH & FILTER BAR ── */
+  #search-bar {
+    background: white; border-radius: 10px; border: 1px solid var(--border);
+    padding: 14px 20px; margin-bottom: 16px;
+    display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  }
+  #search-wrap {
+    position: relative; flex: 1; min-width: 200px;
+  }
+  #search-wrap svg {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    pointer-events: none; color: #888;
+  }
+  #search-input {
+    width: 100%; padding: 8px 12px 8px 36px;
+    border: 1.5px solid #ccc; border-radius: 8px;
+    font-size: 14px; font-family: inherit; outline: none;
+    transition: border-color 0.15s;
+  }
+  #search-input:focus { border-color: var(--blue); }
+  #search-clear {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    background: none; border: none; cursor: pointer; color: #aaa;
+    font-size: 16px; padding: 2px 6px; display: none;
+  }
+  #search-clear:hover { color: #555; }
+  .filter-group { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .filter-label { font-size: 11px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-right: 4px; }
+  .filter-btn {
+    font-size: 12px; font-weight: 600; padding: 5px 11px; border-radius: 20px;
+    border: 1.5px solid #ccc; background: white; cursor: pointer;
+    transition: all 0.15s; color: #555; white-space: nowrap;
+  }
+  .filter-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--light-blue); }
+  .filter-btn.active { background: var(--blue); border-color: var(--blue); color: white; }
+  .filter-btn.active.f-gram-pos { background: #1A6B3C; border-color: #1A6B3C; }
+  .filter-btn.active.f-gram-neg { background: #2E75B6; border-color: #2E75B6; }
+  .filter-btn.active.f-anaer    { background: #6C3483; border-color: #6C3483; }
+  .filter-btn.active.f-mrsa     { background: #C0392B; border-color: #C0392B; }
+  .filter-btn.active.f-itu      { background: #1F7A8C; border-color: #1F7A8C; }
+  .filter-btn.active.f-pneumo   { background: #D35400; border-color: #D35400; }
+  .filter-btn.active.f-sepse    { background: #7B1A1A; border-color: #7B1A1A; }
+  .filter-btn.active.f-intra    { background: #4A235A; border-color: #4A235A; }
+  .filter-btn.active.f-dst      { background: #884EA0; border-color: #884EA0; }
+  .filter-btn.active.f-pseudo   { background: #0E6655; border-color: #0E6655; }
+  #results-info {
+    font-size: 12px; color: #888; padding: 4px 0;
+    display: none;
+  }
+  .drug-card.filtered-out {
+    display: none !important;
+  }
+  .section-header.filtered-out,
+  .drug-card.section-intro-card.filtered-out {
+    display: none !important;
+  }
+  .no-results-msg {
+    text-align: center; padding: 40px; color: #888; font-size: 15px;
+    background: white; border-radius: 10px; border: 1px solid var(--border);
+    display: none;
+  }
+  .drug-card .search-highlight { background: #fff176; border-radius: 2px; }
+
+  /* ── HIGHLIGHTER ── */
+  #hl-toolbar {
+    display: none;
+    position: absolute;
+    z-index: 9999;
+    background: #1e2a38;
+    border-radius: 8px;
+    padding: 6px 8px;
+    gap: 4px;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    pointer-events: auto;
+  }
+  #hl-toolbar.visible { display: flex; }
+  .hl-swatch {
+    width: 22px; height: 22px; border-radius: 50%; border: 2px solid transparent;
+    cursor: pointer; transition: transform 0.1s, border-color 0.1s; flex-shrink: 0;
+  }
+  .hl-swatch:hover { transform: scale(1.2); border-color: white; }
+  .hl-erase {
+    width: 22px; height: 22px; border-radius: 50%; border: 2px solid #666;
+    cursor: pointer; background: #1e2a38; display: flex; align-items: center;
+    justify-content: center; font-size: 13px; color: #aaa; transition: border-color 0.1s;
+    flex-shrink: 0;
+  }
+  .hl-erase:hover { border-color: white; color: white; }
+  .hl-sep { width: 1px; height: 18px; background: #444; margin: 0 2px; }
+  mark.hl { border-radius: 2px; padding: 0 1px; }
+  mark.hl-yellow { background: #fff176; color: inherit; }
+  mark.hl-green  { background: #b9f6ca; color: inherit; }
+  mark.hl-blue   { background: #b3e5fc; color: inherit; }
+  mark.hl-pink   { background: #f8bbd0; color: inherit; }
+  mark.hl-orange { background: #ffe0b2; color: inherit; }
+  mark.hl-purple { background: #e1bee7; color: inherit; }
+  #hl-mode-btn {
+    font-size: 12px; font-weight: 700; padding: 5px 12px; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.1);
+    color: white; cursor: pointer; transition: background 0.15s;
+    display: flex; align-items: center; gap: 5px;
+  }
+  #hl-mode-btn:hover { background: rgba(255,255,255,0.2); }
+  #hl-mode-btn.active { background: #f5c518; color: #1a1a1a; border-color: #f5c518; }
+  body.hl-mode { cursor: crosshair; }
+  body.hl-mode ::selection { background: rgba(245,197,24,0.5); }
+
+
+  /* ── TEXT COLOR PICKER in edit mode ── */
+  body.edit-mode [data-editable]:focus { outline: 2px solid #2E75B6; background: rgba(46,117,182,0.04); }
+  #color-picker-wrap { display: none; align-items: center; gap: 6px; }
+  body.edit-mode #color-picker-wrap { display: flex; }
+  .tc-swatch {
+    width: 18px; height: 18px; border-radius: 50%; border: 2px solid transparent;
+    cursor: pointer; transition: transform 0.1s, border-color 0.1s; flex-shrink: 0;
+  }
+  .tc-swatch:hover { transform: scale(1.25); border-color: white; }
+  .tc-swatch.selected-tc { border-color: white; transform: scale(1.15); }
+  #tc-custom { width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; padding: 0; background: none; }
+  #tc-reset { font-size: 11px; color: rgba(255,255,255,0.7); cursor: pointer; background: none; border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 2px 7px; }
+  #tc-reset:hover { color: white; border-color: white; }
+
+  /* ── BACK TO TOP ── */
+  #back-to-top {
+    position: fixed; bottom: 28px; left: 24px; z-index: 9998;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #1B3A5C; color: white; border: none; cursor: pointer;
+    font-size: 20px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3); opacity: 0;
+    transition: opacity 0.25s, transform 0.2s; transform: translateY(8px);
+    pointer-events: none;
+  }
+  #back-to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  #back-to-top:hover { background: #2E75B6; }
+
+  /* ── AUTO-HIGHLIGHT on selection ── */
+  .hl-swatch.pending { outline: 3px solid white; }
+
+  /* ── ADD DRUG modal ── */
+  #add-drug-overlay {
+    display: none; position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0,0,0,0.55); align-items: center; justify-content: center;
+  }
+  #add-drug-overlay.open { display: flex; }
+  #add-drug-modal {
+    background: white; border-radius: 14px; width: min(680px, 96vw);
+    max-height: 90vh; overflow-y: auto; padding: 28px 28px 20px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  #add-drug-modal h2 { font-size: 17px; font-weight: 700; color: #1B3A5C; margin-bottom: 16px; }
+  .modal-field { margin-bottom: 12px; }
+  .modal-field label { display: block; font-size: 12px; font-weight: 700; color: #555; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 4px; }
+  .modal-field input, .modal-field textarea, .modal-field select {
+    width: 100%; padding: 8px 10px; border: 1.5px solid #ccc; border-radius: 7px;
+    font-size: 13px; font-family: inherit; outline: none; transition: border-color 0.15s;
+  }
+  .modal-field input:focus, .modal-field textarea:focus, .modal-field select:focus { border-color: #2E75B6; }
+  .modal-field textarea { min-height: 70px; resize: vertical; }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eee; }
+  .modal-actions button { padding: 8px 20px; border-radius: 7px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid #ccc; background: white; }
+  .modal-actions .btn-primary { background: #1B3A5C; color: white; border-color: #1B3A5C; }
+  .modal-actions .btn-primary:hover { background: #2E75B6; border-color: #2E75B6; }
+  .modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dose-row-input { display: flex; gap: 6px; margin-bottom: 6px; }
+  .dose-row-input input { flex: 1; }
+  .dose-row-input button { flex-shrink: 0; background: #f5f5f5; border: 1px solid #ccc; border-radius: 5px; padding: 4px 8px; cursor: pointer; font-size: 13px; }
+
+  /* ── COLLAPSE DRUG CARD ── */
+  .drug-card .drug-card-collapse-icon {
+    margin-left: auto;
+    cursor: pointer;
+    font-size: 12px;
+    background: rgba(0,0,0,0.1);
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.15s, transform 0.2s;
+  }
+  .drug-card .drug-card-collapse-icon:hover {
+    background: rgba(0,0,0,0.2);
+  }
+  .drug-card.collapsed .drug-body,
+  .drug-card.collapsed .tip-box,
+  .drug-card.collapsed .alert-box,
+  .drug-card.collapsed .warn-box {
+    display: none !important;
+  }
+  .drug-card.collapsed .drug-card-collapse-icon {
+    transform: rotate(-90deg);
+  }
+
+  /* ── DELETE BUTTONS ── */
+  .delete-drug-btn {
+    display: none;
+    margin: 8px 20px 12px;
+    padding: 6px 14px;
+    background: #fff0f0;
+    border: 1.5px solid #e74c3c;
+    color: #c0392b;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  body.edit-mode .delete-drug-btn { display: block; }
+  .delete-drug-btn:hover { background: #fde8e8; }
+  
+  .delete-balloon-btn {
+    display: none;
+    float: right;
+    margin: -4px -6px 4px 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #aaa;
+    line-height: 1;
+    padding: 0 2px;
+  }
+  .delete-balloon-btn:hover { color: #c0392b; }
+  body.edit-mode .delete-balloon-btn { display: inline; }
+
+  .delete-section-btn {
+    display: none;
+    margin-left: auto;
+    background: rgba(192, 57, 43, 0.9);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+    transition: background 0.15s;
+  }
+  .delete-section-btn:hover { background: #E74C3C; }
+  body.edit-mode .delete-section-btn { display: inline-block; }
+
+</style>
+</head>
+<body>
+
+<div id="edit-toolbar">
+  <span style="font-weight:700;font-size:14px;letter-spacing:0.5px;">✏ Vademécum</span>
+  <span class="sep">|</span>
+  <button id="btn-toggle" onclick="toggleEdit()">Modo Edição: OFF</button>
+  <button onclick="saveNow()" title="Salvar alterações no navegador">💾 Salvar</button>
+  <div id="color-picker-wrap" title="Cor do texto selecionado">
+    <span style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;letter-spacing:0.4px;">COR:</span>
+    <div class="tc-swatch selected-tc" style="background:#1a1a1a" data-tc="#1a1a1a" title="Preto" onclick="applyTextColor('#1a1a1a',this)"></div>
+    <div class="tc-swatch" style="background:#C0392B" data-tc="#C0392B" title="Vermelho" onclick="applyTextColor('#C0392B',this)"></div>
+    <div class="tc-swatch" style="background:#1A6B3C" data-tc="#1A6B3C" title="Verde" onclick="applyTextColor('#1A6B3C',this)"></div>
+    <div class="tc-swatch" style="background:#2E75B6" data-tc="#2E75B6" title="Azul" onclick="applyTextColor('#2E75B6',this)"></div>
+    <div class="tc-swatch" style="background:#D35400" data-tc="#D35400" title="Laranja" onclick="applyTextColor('#D35400',this)"></div>
+    <div class="tc-swatch" style="background:#6C3483" data-tc="#6C3483" title="Roxo" onclick="applyTextColor('#6C3483',this)"></div>
+    <input type="color" id="tc-custom" value="#1a1a1a" title="Cor personalizada" onchange="applyTextColor(this.value,null)">
+    <button id="tc-reset" onclick="applyTextColor('',null)" title="Remover cor">↺</button>
+  </div>
+  <button onclick="openAddDrug()" title="Adicionar novo fármaco ao vademécum" style="background:rgba(26,107,60,0.4);border-color:rgba(26,107,60,0.7);">＋ Fármaco</button>
+  <button id="hl-mode-btn" onclick="toggleHlMode()" title="Ativar marcatexto: selecione um texto e escolha a cor">&#9638; Marcatexto</button>
+  <button onclick="exportHTML()" title="Baixar HTML com suas edições">⬇ Exportar</button>
+  <button onclick="resetAll()" title="Apagar todas as edições e restaurar original" style="background:rgba(192,57,43,0.4);border-color:rgba(192,57,43,0.6);">↺ Restaurar</button>
+  <span class="sep">|</span>
+  <button onclick="expandAllSections()" title="Expandir todas as seções">📂 Expandir Tudo</button>
+  <button onclick="collapseAllSections()" title="Colapsar todas as seções">📁 Colapsar Tudo</button>
+  <span id="saved-flash">✓ Salvo</span>
+  <span class="status" id="edit-status">Clique em "Modo Edição" para editar qualquer texto</span>
+</div>
+
+<div class="container">
+
+<div id="search-bar">
+  <div id="search-wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="search-input" type="text" placeholder="Buscar antibiótico... (ex: ceftriaxona, MRSA, pneumonia)" autocomplete="off" />
+    <button id="search-clear" onclick="clearSearch()" title="Limpar">&#x2715;</button>
+  </div>
+  <div class="filter-group">
+    <span class="filter-label">Filtros:</span>
+    <button class="filter-btn f-gram-pos" data-filter="gram+" onclick="toggleFilter(this)">Gram +</button>
+    <button class="filter-btn f-gram-neg" data-filter="gram-" onclick="toggleFilter(this)">Gram −</button>
+    <button class="filter-btn f-anaer"    data-filter="anaerobios" onclick="toggleFilter(this)">Anaeróbios</button>
+    <button class="filter-btn f-mrsa"     data-filter="mrsa" onclick="toggleFilter(this)">MRSA</button>
+    <button class="filter-btn f-pseudo"   data-filter="pseudomonas" onclick="toggleFilter(this)">Pseudomonas</button>
+    <button class="filter-btn f-itu"      data-filter="itu" onclick="toggleFilter(this)">ITU</button>
+    <button class="filter-btn f-pneumo"   data-filter="pneumonia" onclick="toggleFilter(this)">Pneumonia</button>
+    <button class="filter-btn f-sepse"    data-filter="sepse" onclick="toggleFilter(this)">Sepse</button>
+    <button class="filter-btn f-intra"    data-filter="intraabdominal" onclick="toggleFilter(this)">Intra-abdominal</button>
+    <button class="filter-btn f-dst"      data-filter="dst" onclick="toggleFilter(this)">DST</button>
+    <button class="filter-btn"            data-filter="esbl" onclick="toggleFilter(this)">ESBL</button>
+    <button class="filter-btn"            data-filter="tb" onclick="toggleFilter(this)">TB</button>
+    <button class="filter-btn"            data-filter="neutropenia" onclick="toggleFilter(this)">Neutropenia</button>
+  </div>
+</div>
+<div id="results-info"></div>
+<div class="no-results-msg" id="no-results">Nenhum antibiótico encontrado para esta busca.</div>
+
+<div class="cover">
+  <h1>VADEMÉCUM DE ANTIBIÓTICOS</h1>
+  <div class="subtitle">Guia Clínico para Estudantes de Medicina</div>
+  <div class="sub2">Fase Clínica — Revisão e Raciocínio Terapêutico</div>
+  <div class="legend">
+    <span>⭐ Uso muito comum</span>
+    <span>★ Uso relevante</span>
+    <span>💡 Dica clínica / prova</span>
+  </div>
+</div>
+
+<div class="nav">
+  <a href="#beta">I. Beta-lactâmicos</a>
+  <a href="#macro">II. Macrolídeos</a>
+  <a href="#amino">III. Aminoglicosídeos</a>
+  <a href="#fluoro">IV. Fluoroquinolonas</a>
+  <a href="#tetra">V. Tetraciclinas</a>
+  <a href="#sulfa">VI. Sulfonamidas</a>
+  <a href="#glico">VII. Glicopeptídeos</a>
+  <a href="#oxa">VIII. Oxazolidinonas</a>
+  <a href="#linco">IX. Lincosamidas</a>
+  <a href="#nitro">X. Nitroimidazóis</a>
+  <a href="#outros">XI. Outros</a>
+  <a href="#quickref">XII. Referência Rápida</a>
+</div>
+
+<div id="beta" class="section-header navy"><h2>I. BETA-LACTÂMICOS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição da síntese da parede celular por ligação às PBPs (Penicillin-Binding Proteins), impedindo a transpeptidação do peptidoglicano. Bactericidas tempo-dependentes.</div>
+</div>
+
+<div id="sub-penicilinas" class="section-header blue" style="margin-top:16px;"><h2>I.A — Penicilinas</h2></div>
+
+<div id="amoxicilina" class="drug-card" data-tags="gram+,respiratorio,itu,irl,otite,sinusite,helicobacter" data-name="amoxicilina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header common">
+    <h3>⭐ AMOXICILINA</h3><span class="badge-common">USO MUITO COMUM</span>
+  </div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inibição das PBPs → bactericida tempo-dependente. Sensível a β-lactamases.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: Streptococcus spp., Enterococcus faecalis, Listeria monocytogenes</li>
+      <li class="good">Gram −: H. influenzae (não-β-lactamase), E. coli (parcial), H. pylori</li>
+      <li class="danger">NÃO cobre: MRSA, Pseudomonas, enterobactérias produtoras de β-lactamase, anaeróbios</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Otite média aguda bacteriana (1ª escolha)</li>
+      <li>Sinusite bacteriana aguda (1ª escolha)</li>
+      <li>Faringotonsilite estreptocócica (alternativa à penicilina V)</li>
+      <li>PAC ambulatorial sem comorbidades (1ª escolha em muitos protocolos)</li>
+      <li>Erradicação H. pylori (esquemas tríplice/quádruplo)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções ORL/respiratórias</td><td>500 mg</td><td>VO</td><td>8/8h ou 875 mg 12/12h</td><td>ClCr &lt;30: reduzir</td></tr>
+      <tr><td>PAC ambulatorial</td><td>875 mg</td><td>VO</td><td>12/12h × 5–7d</td><td>Ajustar ClCr &lt;30</td></tr>
+      <tr><td>H. pylori (tríplice)</td><td>1 g</td><td>VO</td><td>12/12h × 7–14d</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Rash maculopapular em mononucleose (EBV) — clássico!</li>
+      <li>Diarreia, náusea, vômito</li>
+      <li>Reação alérgica: urticária, anafilaxia (&lt;0,05%)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Hipersensibilidade a penicilinas</li>
+      <li>Ajuste obrigatório em IR grave (ClCr &lt;30 mL/min)</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Rash em mononucleose com amoxicilina NÃO é alergia verdadeira — mecanismo imunomediado do EBV. Não contraindicar penicilinas futuras.</div>
+  <div class="tip-box"><strong>💡 Prática:</strong> 500 mg 8/8h ≈ 875 mg 12/12h em eficácia — preferir 12/12h para melhor adesão.</div>
+</div>
+
+<div id="amox-clav" class="drug-card" data-tags="gram+,gram-,anaerobios,respiratorio,itu,pele,mordedura,irl" data-name="amox-clav">
+  <div class="drug-header common">
+    <h3>⭐ AMOXICILINA + ÁCIDO CLAVULÂNICO</h3><span class="badge-common">USO MUITO COMUM</span>
+  </div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Amoxicilina inibe PBPs; clavulanato é inibidor suicida de β-lactamases → recupera atividade frente a produtores de β-lactamase.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: igual amoxicilina + S. aureus MSSA</li>
+      <li class="good">Gram −: H. influenzae, M. catarrhalis, E. coli, Klebsiella (β-lactamase plasmidial)</li>
+      <li class="good">Anaeróbios: Bacteroides fragilis, Prevotella</li>
+      <li class="danger">NÃO cobre: MRSA, Pseudomonas, ESBL, KPC</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Sinusite/otite refratária ou pediátrica grave</li>
+      <li>PAC com comorbidades (DPOC, DM, ATB prévio)</li>
+      <li>Infecção de pele por MSSA</li>
+      <li><strong>Mordeduras humanas e animais</strong> (Pasteurella multocida) — 1ª escolha</li>
+      <li>ITU complicada ambulatorial</li>
+      <li>Pé diabético leve a moderado</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções leves/moderadas</td><td>875/125 mg</td><td>VO</td><td>12/12h</td><td>ClCr 10–30: 500/125 mg 12/12h</td></tr>
+      <tr><td>Infecções graves (IV)</td><td>1 g/200 mg</td><td>IV</td><td>8/8h</td><td>Ajustar ClCr</td></tr>
+      <tr><td>Mordedura de animal</td><td>875/125 mg</td><td>VO</td><td>12/12h × 5–7d</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Diarreia (clavulanato estimula motilidade) — mais frequente que amoxicilina isolada</li>
+      <li class="danger">Hepatotoxicidade colestática — risco maior no idoso, uso &gt;2 semanas</li>
+      <li>Náusea, vômito — tomar com alimento</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Histórico de icterícia colestática por amoxicilina-clavulanato</li>
+      <li>Hepatopatia ativa grave</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> 1ª escolha em mordeduras — cobre polimicrobiana oral incluindo Pasteurella multocida.</div>
+  <div class="tip-box"><strong>💡 Prática:</strong> Preferir 875/125 mg (razão 7:1) à 500/125 mg (4:1): menos clavulanato = menos diarreia.</div>
+  <div class="alert-box"><strong>MERINO 2018:</strong> Para bacteremia por ESBL, meropeném é superior ao pip-tazo. Não usar amox-clav para ESBL grave.</div>
+</div>
+
+<div id="pen-g" class="drug-card" data-tags="gram+,sifilis,meningite,profilaxia" data-name="pen-g">
+  <div class="drug-header"><h3>★ PENICILINA G (Benzatina / Procaína / Cristalina)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Streptococcus pyogenes (GAS), S. agalactiae, S. pneumoniae sensível, N. meningitidis</li>
+      <li class="good">Treponema pallidum (excelente — droga de escolha)</li>
+      <li class="good">Clostridium spp., Actinomyces israelii</li>
+      <li class="danger">NÃO cobre: S. aureus (penicilinase), Gram−, Enterococcus resistente</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Benzatina: Faringotonsilite (1ª escolha); Sífilis (todos os estágios); profilaxia febre reumática</li>
+      <li>Cristalina IV: Neurossífilis; meningite meningocócica; leptospirose grave</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Faringotonsilite (benzatina)</td><td>1,2 MUI</td><td>IM</td><td>Dose única</td><td>—</td></tr>
+      <tr><td>Sífilis primária/secundária</td><td>2,4 MUI</td><td>IM</td><td>Dose única</td><td>—</td></tr>
+      <tr><td>Sífilis latente tardia</td><td>2,4 MUI</td><td>IM</td><td>Semanal × 3 sem.</td><td>—</td></tr>
+      <tr><td>Neurossífilis (cristalina)</td><td>3–4 MUI</td><td>IV</td><td>4/4h × 10–14d</td><td>Ajustar ClCr &lt;10</td></tr>
+      <tr><td>Profilaxia febre reumática</td><td>1,2 MUI</td><td>IM</td><td>A cada 21 dias</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Reação de Jarisch-Herxheimer: febre, calafrios, hipotensão 2–8h após 1ª dose de sífilis</li>
+      <li>Dor no local IM; anafilaxia (rara)</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>CRÍTICO:</strong> Benzatina NUNCA IV — risco de embolismo e parada cardíaca.</div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Penicilina G benzatina = droga de escolha para TODOS os estágios de sífilis exceto neurossífilis (cristalina IV). Gestante alérgica: dessensibilização obrigatória.</div>
+</div>
+
+<div id="oxacilina" class="drug-card" data-tags="gram+,mrsa-nao,mssa,endocardite,osso" data-name="oxacilina">
+  <div class="drug-header"><h3>★ OXACILINA (Penicilina isoxazolil)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inibição das PBPs. Cadeia lateral volumosa protege o anel β-lactâmico de penicilinases estafilocócicas.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">S. aureus MSSA — droga de escolha</li>
+      <li class="good">Streptococcus spp.</li>
+      <li class="danger">NÃO cobre: MRSA (PBP2a mutante), Gram−, anaeróbios</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Bacteremia/endocardite por S. aureus MSSA (1ª escolha)</li>
+      <li>Infecções osteoarticulares por MSSA (osteomielite, artrite séptica)</li>
+      <li>Pneumonia por S. aureus MSSA</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Endocardite/bacteremia grave</td><td>2 g</td><td>IV</td><td>4/4h</td><td>Sem ajuste significativo</td></tr>
+      <tr><td>Infecção moderada</td><td>1–2 g</td><td>IV</td><td>6/6h</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="warning">Hepatotoxicidade (colestase): monitorar transaminases</li>
+      <li>Flebite, nefrite intersticial</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova clássica:</strong> Identificou MSSA na hemocultura? Troque vancomicina por oxacilina — menor mortalidade e menor falha terapêutica (estudo NEJM clássico). Vancomicina é inferior para MSSA.</div>
+</div>
+
+<div id="pip-tazo" class="drug-card" data-tags="gram+,gram-,anaerobios,pseudomonas,intraabdominal,pneumonia,neutropenia" data-name="pip-tazo">
+  <div class="drug-header"><h3>★ PIPERACILINA + TAZOBACTAM (Pip-tazo)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: Streptococcus, Enterococcus faecalis, MSSA</li>
+      <li class="good">Gram −: Pseudomonas aeruginosa, E. coli, Klebsiella, Enterobacter, H. influenzae</li>
+      <li class="good">Anaeróbios: Bacteroides fragilis</li>
+      <li class="danger">NÃO cobre: MRSA, E. faecium, ESBL confiável, KPC/MBL</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções intra-abdominais (peritonite, abscesso) — cobertura polimicrobiana</li>
+      <li>Pneumonia nosocomial / VAP</li>
+      <li>Febre neutropênica (empírico)</li>
+      <li>ITU complicada por Gram− resistente</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções moderadas-graves</td><td>3,375 g</td><td>IV</td><td>6/6h</td><td>ClCr 20–40: 2,25 g 6/6h; &lt;20: 2,25 g 8/8h</td></tr>
+      <tr><td>Pseudomonas grave</td><td>4,5 g</td><td>IV</td><td>6/6h ou infusão 4h</td><td>Ajustar</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li>Hiponatremia, hipocalemia (carga de sódio elevada)</li>
+      <li>Colite por C. difficile</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>MERINO 2018 (NEJM):</strong> Para bacteremia por ESBL, meropeném é superior ao pip-tazo. NÃO usar pip-tazo como definitivo para ESBL bacterêmica grave.</div>
+  <div class="tip-box"><strong>💡 Prática:</strong> Infusão estendida de 4h otimiza parâmetro PK/PD tempo-dependente para Pseudomonas com MIC elevado.</div>
+</div>
+
+<div id="sub-cefalosporinas" class="section-header teal" style="margin-top:24px;"><h2>I.B — Cefalosporinas</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Geração determina espectro: maior geração = maior cobertura Gram− e menor Gram+. Estável frente a penicilinases, sensível a ESBLs/cefalosporinases.</div>
+</div>
+
+<div id="cefalexina" class="drug-card" data-tags="gram+,pele,itu" data-name="cefalexina">
+  <div class="drug-header common"><h3>⭐ CEFALEXINA (1ª geração — oral)</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. aureus MSSA, Streptococcus spp. — excelente</li>
+      <li>Gram − limitado: E. coli, Klebsiella, Proteus mirabilis</li>
+      <li class="danger">NÃO cobre: MRSA, Pseudomonas, Enterococcus, anaeróbios</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecção de pele e partes moles não complicada (impetigo, celulite, erisipela)</li>
+      <li>ITU não complicada</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecção de pele</td><td>500 mg</td><td>VO</td><td>6/6h</td><td>ClCr &lt;30: 500 mg 8/8h; &lt;15: 12/12h</td></tr>
+      <tr><td>ITU não complicada</td><td>500 mg</td><td>VO</td><td>12/12h × 7d</td><td>Ajustar ClCr</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prática:</strong> Cefalexina = oral de escolha para celulite/erisipela (Streptococcus/MSSA). Preferir sobre amoxicilina por cobertura de S. aureus.</div>
+</div>
+
+<div id="cefazolina" class="drug-card" data-tags="gram+,pele,profilaxia,mssa" data-name="cefazolina">
+  <div class="drug-header common"><h3>⭐ CEFAZOLINA (1ª geração — IV)</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content">Igual à cefalexina: excelente Gram+ (MSSA, Streptococcus), Gram− limitado.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li><strong>PROFILAXIA CIRÚRGICA — gold standard</strong> para maioria das cirurgias limpas e limpo-contaminadas</li>
+      <li>Bacteremia/endocardite por MSSA (alternativa à oxacilina em alérgicos leves)</li>
+      <li>Infecções ósseas por MSSA</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Profilaxia cirúrgica</td><td>2 g (3 g se &gt;120 kg)</td><td>IV</td><td>Dose única 30–60 min pré-op</td><td>Reduzir ClCr &lt;30</td></tr>
+      <tr><td>Infecção grave MSSA</td><td>1–2 g</td><td>IV</td><td>8/8h</td><td>Ajustar ClCr</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Cefazolina = antibiótico mais utilizado mundialmente para profilaxia cirúrgica. Repetir dose se cirurgia &gt;4h ou sangramento &gt;1,5 L.</div>
+</div>
+
+<div id="ceftriaxona" class="drug-card" data-tags="gram+,gram-,meningite,pneumonia,itu,sifilis,gonorreia,sepse" data-name="ceftriaxona">
+  <div class="drug-header common"><h3>⭐ CEFTRIAXONA (3ª geração)</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inibição das PBPs. Meia-vida longa (~8h) permite dose única diária. Excelente penetração no LCR.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. pneumoniae, Streptococcus, Neisseria spp.</li>
+      <li class="good">Gram −: amplo — E. coli, Klebsiella, Proteus, H. influenzae, Salmonella, N. gonorrhoeae</li>
+      <li class="good">SNC: boa penetração (meningite)</li>
+      <li class="danger">NÃO cobre: MRSA, Pseudomonas, Enterococcus, anaeróbios, ESBL</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Meningite bacteriana (1ª escolha empírica em adultos imunocompetentes)</li>
+      <li>PAC internada moderada-grave (± azitromicina)</li>
+      <li>Pielonefrite/ITU complicada internada</li>
+      <li>Gonorreia (cervical/uretral/disseminada)</li>
+      <li>Sepse de foco comunitário (empírico)</li>
+      <li>Febre tifoide / Salmonella invasiva</li>
+      <li>Peritonite bacteriana espontânea (PBE)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>PAC internada / sepse</td><td>1–2 g</td><td>IV/IM</td><td>1×/dia</td><td>Sem ajuste (excreção biliar)</td></tr>
+      <tr><td>Meningite bacteriana</td><td>2 g</td><td>IV</td><td>12/12h</td><td>Sem ajuste</td></tr>
+      <tr><td>Gonorreia cervical/uretral</td><td>500 mg</td><td>IM</td><td>Dose única</td><td>—</td></tr>
+      <tr><td>PBE</td><td>1 g</td><td>IV</td><td>1×/dia × 5–7d</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Pseudolitíase biliar (cálculos de ceftriaxona) — evitar em neonatos e doença biliar</li>
+      <li class="danger">Incompatível com cálcio IV (precipitação) — não infundir junto</li>
+      <li>Colite por C. difficile</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 PAC internada:</strong> Ceftriaxona + azitromicina = dupla clássica (cobre pneumococo + atípicos). Para PAC em UTI: ceftriaxona + azitromicina OU quinolona respiratória.</div>
+  <div class="tip-box"><strong>💡 Prática:</strong> Ceftriaxona é o antibiótico IV mais prescrito do mundo. Meia-vida longa = dose única/dia = facilita uso ambulatorial (OPAT).</div>
+</div>
+
+<div id="ceftazidima" class="drug-card" data-tags="gram-,pseudomonas,pneumonia" data-name="ceftazidima">
+  <div class="drug-header"><h3>★ CEFTAZIDIMA (3ª geração — anti-Pseudomonas)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram −: Pseudomonas aeruginosa (excelente), Enterobactérias</li>
+      <li class="danger">Gram + REDUZIDO — fraca cobertura comparada à ceftriaxona</li>
+      <li class="danger">NÃO cobre: MRSA, anaeróbios, ESBL</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções por Pseudomonas aeruginosa: pneumonia nosocomial, fibrose cística, bacteremia</li>
+      <li>Febre neutropênica (em combinação)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções por Pseudomonas</td><td>2 g</td><td>IV</td><td>8/8h</td><td>ClCr 31–50: 1 g 12/12h; 16–30: 1 g/dia; &lt;15: 500 mg/dia</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Ceftazidima = 3ª geração COM Pseudomonas mas SEM boa cobertura Gram+. Ceftriaxona = 3ª geração SEM Pseudomonas mas COM boa cobertura Gram+. Nunca usar ceftazidima como monoterapia para Gram+ grave.</div>
+</div>
+
+<div id="cefepima" class="drug-card" data-tags="gram+,gram-,pseudomonas,pneumonia,neutropenia" data-name="cefepima">
+  <div class="drug-header"><h3>★ CEFEPIMA (4ª geração)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. aureus MSSA, Streptococcus</li>
+      <li class="good">Gram −: Pseudomonas aeruginosa, Enterobactérias AmpC (Enterobacter, Serratia, Citrobacter)</li>
+      <li class="danger">NÃO cobre: MRSA, Enterococcus, anaeróbios, ESBL, KPC</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Pneumonia nosocomial / VAP</li>
+      <li>Febre neutropênica (monoterapia empírica)</li>
+      <li>Infecções por AmpC (Enterobacter, Serratia, Citrobacter, Providencia, Morganella — "ESCPM")</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Pneumonia nosocomial / febre neutropênica</td><td>2 g</td><td>IV</td><td>8/8h</td><td>ClCr 30–60: 2 g 12/12h; 11–29: 2 g/dia; &lt;11: 1 g/dia</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Neurotoxicidade (encefalopatia, mioclonias, convulsões) — especialmente em IR sem ajuste de dose</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Mnemônico:</strong> Regra ESCPM — Enterobacter, Serratia, Citrobacter, Providencia, Morganella produzem AmpC cromossomial induzível por cefalosporinas de 3ª geração → usar cefepima ou carbapenêmico.</div>
+</div>
+
+<div id="ceftarolina" class="drug-card" data-tags="gram+,mrsa,pneumonia,pele" data-name="ceftarolina">
+  <div class="drug-header"><h3>★ CEFTAROLINA (5ª geração)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inibição de PBPs incluindo PBP2a (alvo do MRSA) — único beta-lactâmico com atividade anti-MRSA.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">MRSA — único beta-lactâmico ativo</li>
+      <li class="good">Gram +: S. aureus MSSA/MRSA, S. pneumoniae (PRSP), Streptococcus</li>
+      <li>Gram −: E. coli, Klebsiella, H. influenzae (similar a 3ª geração)</li>
+      <li class="danger">NÃO cobre: Pseudomonas, Acinetobacter, ESBL, KPC, Enterococcus</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>PAC grave por S. pneumoniae resistente (PRSP)</li>
+      <li>Infecção de pele complicada por MRSA</li>
+      <li>Bacteremia/endocardite MRSA refratária a vancomicina (off-label)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Pele/PAC</td><td>600 mg</td><td>IV</td><td>12/12h × 5–14d</td><td>ClCr 31–50: 400 mg 12/12h; 15–30: 300 mg 12/12h</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Ceftarolina = único beta-lactâmico anti-MRSA. Útil quando vancomicina falha (MIC elevado) ou como terapia combinada em endocardite MRSA persistente.</div>
+</div>
+
+<div id="sub-carbapenemicos" class="section-header purple" style="margin-top:24px;"><h2>I.C — Carbapenêmicos</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Reserva terapêutica para infecções multirresistentes. Resistentes à maioria das β-lactamases (exceto KPC e MBL). Inibem PBPs de mais amplo espectro.</div>
+</div>
+
+<div id="meropenem" class="drug-card" data-tags="gram+,gram-,anaerobios,pseudomonas,esbl,meningite,pneumonia,intraabdominal,sepse" data-name="meropenem">
+  <div class="drug-header"><h3>★ MEROPENÉM</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: Streptococcus, MSSA, Enterococcus faecalis</li>
+      <li class="good">Gram −: AMPLÍSSIMO — Pseudomonas, Acinetobacter, ESBL+, AmpC, Enterobactérias</li>
+      <li class="good">Anaeróbios: excelente (inclui B. fragilis)</li>
+      <li class="danger">NÃO cobre: MRSA, E. faecium, KPC, MBL (NDM, VIM, IMP)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções graves por ESBL: bacteremia, pielonefrite, sepse (1ª escolha após MERINO 2018)</li>
+      <li>Meningite bacteriana nosocomial</li>
+      <li>Infecções intra-abdominais graves / peritonite fecal</li>
+      <li>Pneumonia nosocomial grave / VAP</li>
+      <li>Febre neutropênica de alto risco</li>
+      <li>Infecções por Acinetobacter MDR</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções moderadas</td><td>1 g</td><td>IV</td><td>8/8h</td><td>ClCr 26–50: 1 g 12/12h; 10–25: 500 mg 12/12h; &lt;10: 500 mg/dia</td></tr>
+      <tr><td>Infecções graves / Pseudomonas</td><td>2 g</td><td>IV</td><td>8/8h (ou infusão 3h)</td><td>Ajustar ClCr</td></tr>
+      <tr><td>Meningite nosocomial</td><td>2 g</td><td>IV</td><td>8/8h</td><td>Ajustar</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li>Convulsões (menos que imipeném)</li>
+      <li>Diarreia, colite por C. difficile</li>
+      <li>Seleção de KPC com uso prolongado</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Meningite:</strong> Meropeném &gt; imipeném para SNC — menos convulsivante. Imipeném CONTRAINDICADO em meningite.</div>
+  <div class="tip-box"><strong>💡 Prática:</strong> Infusão estendida (3–4h) otimiza PK/PD para Pseudomonas com MIC &gt;2 µg/mL. Considerar em UTI.</div>
+</div>
+
+<div id="ertapenem" class="drug-card" data-tags="gram-,anaerobios,esbl,itu,intraabdominal" data-name="ertapenem">
+  <div class="drug-header"><h3>★ ERTAPENÉM</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram −: ESBL+, AmpC, Enterobactérias — excelente</li>
+      <li class="good">Anaeróbios: excelente</li>
+      <li class="danger">NÃO cobre: Pseudomonas aeruginosa, Acinetobacter, MRSA, Enterococcus</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções por ESBL: pielonefrite, ITU complicada, intra-abdominal (ambulatorial/hospitalar)</li>
+      <li>Pé diabético moderado-grave</li>
+      <li>Profilaxia cirúrgica coloretal</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções ESBL / intra-abdominal</td><td>1 g</td><td>IV/IM</td><td>1×/dia</td><td>ClCr &lt;30: 500 mg/dia</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Ertapeném = carbapenêmico SEM atividade anti-Pseudomonas. Dose única/dia, uso IM possível = "carbapenêmico ambulatorial". Ideal para step-down ou tratamento domiciliar de ESBL.</div>
+</div>
+
+<div id="sub-monobactamicos" class="section-header teal" style="margin-top:24px;"><h2>I.D — Monobactâmicos</h2></div>
+<div id="aztreonam" class="drug-card" data-tags="gram-,pseudomonas,itu" data-name="aztreonam" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header"><h3>★ AZTREONAM</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Estrutura monocíclica — sem anel tiazolidínico → sem reatividade cruzada com penicilinas/cefalosporinas (exceto ceftazidima).</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram − aeróbios APENAS: Pseudomonas, Enterobactérias, H. influenzae</li>
+      <li class="danger">ZERO atividade Gram+, anaeróbios</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções por Gram− em pacientes com alergia grave a beta-lactâmicos (anafilaxia)</li>
+      <li>Fibrose cística — exacerbações por Pseudomonas</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções Gram−</td><td>2 g</td><td>IV</td><td>8/8h</td><td>ClCr 10–30: 1–2 g 8/8h; &lt;10: 500 mg 8/8h</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Aztreonam SEGURO em alérgicos a beta-lactâmicos EXCETO ceftazidima (cadeia lateral idêntica — reação cruzada). Uso principal: Gram− grave em paciente com anafilaxia a penicilina/cefalosporina.</div>
+</div>
+
+<div id="macro" class="section-header navy" style="margin-top:36px;"><h2>II. MACROLÍDEOS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição da síntese proteica por ligação reversível à subunidade 50S (sítio 23S rRNA), bloqueando translocação peptídica. Bacteriostáticos. Excelente penetração intracelular — cobertura de organismos atípicos.</div>
+</div>
+
+<div id="azitromicina" class="drug-card" data-tags="gram+,gram-,atipicos,pneumonia,dst,dst-clamidija,mac" data-name="azitromicina">
+  <div class="drug-header common"><h3>⭐ AZITROMICINA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Atípicos: Mycoplasma pneumoniae, Chlamydophila pneumoniae, Chlamydia trachomatis, Legionella (excelente)</li>
+      <li class="good">Gram +: Streptococcus pyogenes, S. pneumoniae sensível</li>
+      <li class="good">Gram −: H. influenzae, M. catarrhalis, Campylobacter, N. gonorrhoeae (resistência crescente)</li>
+      <li class="good">MAC (Mycobacterium avium complex)</li>
+      <li class="danger">NÃO cobre: MRSA, Klebsiella, E. coli, Pseudomonas, anaeróbios</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>PAC ambulatorial (monoterapia em jovem sem comorbidades) ou + beta-lactâmico em internados</li>
+      <li>Pneumonia atípica: Mycoplasma, Chlamydophila, Legionella</li>
+      <li>Chlamydia trachomatis: uretrite, cervicite (1 g dose única)</li>
+      <li>Faringotonsilite em alérgicos a penicilina (alternativa)</li>
+      <li>Gastroenterite por Campylobacter</li>
+      <li>Profilaxia de MAC em HIV/AIDS (CD4 &lt;50)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>PAC ambulatorial (5d)</td><td>500 mg D1, 250 mg D2–5</td><td>VO</td><td>1×/dia</td><td>Sem ajuste (excreção biliar)</td></tr>
+      <tr><td>PAC (dose alta 3d)</td><td>500 mg</td><td>VO</td><td>1×/dia × 3d</td><td>—</td></tr>
+      <tr><td>Clamídia genital</td><td>1 g</td><td>VO</td><td>Dose única</td><td>—</td></tr>
+      <tr><td>Endovenoso (PAC grave)</td><td>500 mg</td><td>IV</td><td>1×/dia</td><td>Sem ajuste</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Prolongamento do QT — risco de torsades de pointes. Avaliar ECG basal.</li>
+      <li>Náusea, diarreia, dor abdominal</li>
+      <li>Ototoxicidade (altas doses, uso prolongado)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>QT prolongado, hipocalemia/hipomagnesemia não corrigida</li>
+      <li>Evitar com outros QT-prolongadores (antiarrítmicos classe IA e III, haloperidol, metadona)</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 PAC:</strong> Ceftriaxona IV + azitromicina VO/IV = dupla clássica para PAC internada (cobre pneumococo + atípicos). Para PAC em UTI: beta-lactâmico + macrolídeo OU beta-lactâmico + quinolona respiratória.</div>
+</div>
+
+<div id="claritromicina" class="drug-card" data-tags="gram+,atipicos,pneumonia,helicobacter,mac" data-name="claritromicina">
+  <div class="drug-header common"><h3>⭐ CLARITROMICINA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content">Similar à azitromicina. Maior atividade anti-Gram+ e anti-H. pylori. Forte inibidor CYP3A4 — muitas interações.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Erradicação de H. pylori (esquemas tríplice/quádruplo)</li>
+      <li>PAC ambulatorial — alternativa</li>
+      <li>MAC: tratamento e profilaxia (com etambutol ± rifabutina)</li>
+      <li>Profilaxia de endocardite em alérgicos a penicilina (procedimentos dentários)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>PAC / sinusite</td><td>500 mg</td><td>VO</td><td>12/12h × 7–14d</td><td>ClCr &lt;30: reduzir 50%</td></tr>
+      <tr><td>H. pylori</td><td>500 mg</td><td>VO</td><td>12/12h × 7–14d</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Gosto metálico amargo — muito frequente</li>
+      <li class="warning">Interações medicamentosas extensas via CYP3A4: estatinas (↑ rabdomiólise), anticoagulantes, imunossupressores, antifúngicos azóis</li>
+      <li>Prolongamento QT; hepatotoxicidade</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Interação importante:</strong> Claritromicina + estatinas = risco de rabdomiólise. Suspender ou reduzir estatina lipofílica (sinvastatina, atorvastatina) durante o tratamento.</div>
+</div>
+
+<div id="amino" class="section-header navy" style="margin-top:36px;"><h2>III. AMINOGLICOSÍDEOS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição irreversível da síntese proteica por ligação à subunidade 30S (sítio 16S rRNA) → misreading do mRNA. Bactericidas concentração-dependentes. Requerem aerobiose — SEM atividade em abscessos/anaeróbios.</div>
+</div>
+
+<div id="gentamicina" class="drug-card" data-tags="gram-,pseudomonas,endocardite,sinergia" data-name="gentamicina">
+  <div class="drug-header common"><h3>⭐ GENTAMICINA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram −: E. coli, Klebsiella, Proteus, Pseudomonas, Enterobacter, Serratia</li>
+      <li>S. aureus MSSA (sinergia — não monoterapia)</li>
+      <li class="danger">NÃO cobre: Streptococcus, anaeróbios, atípicos</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Sinergia com beta-lactâmicos em endocardite enterocócica e estreptocócica</li>
+      <li>Infecções graves por Gram− (bacteremia, pielonefrite) — geralmente em combinação</li>
+      <li>Peritonite em diálise peritoneal (intraperitoneal)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecção Gram− (dose estendida)</td><td>5–7 mg/kg</td><td>IV</td><td>1×/dia</td><td>Monitorar níveis; ajuste obrigatório em IR</td></tr>
+      <tr><td>Sinergia endocardite</td><td>1 mg/kg</td><td>IV</td><td>8/8h</td><td>Ajustar por nível sérico</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">NEFROTOXICIDADE: lesão tubular proximal — monitorar creatinina 2–3×/semana</li>
+      <li class="danger">OTOTOXICIDADE: dano coclear (perda auditiva permanente) e vestibular</li>
+      <li>Bloqueio neuromuscular — risco em miastenia gravis</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Miastenia gravis</li>
+      <li>Outros nefrotóxicos concomitantes (anfotericina, contraste, AINE)</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Dose estendida:</strong> 5–7 mg/kg/dia 1×/dia = mesma eficácia, MENOR toxicidade que dose convencional dividida. Meta: vale pré-dose &lt;1 µg/mL.</div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Aminoglicosídeos NÃO penetram em abscessos (ambiente ácido, anaeróbio, baixo pH). Nunca usar como monoterapia em coleções fechadas.</div>
+</div>
+
+<div id="amicacina" class="drug-card" data-tags="gram-,pseudomonas,tb" data-name="amicacina">
+  <div class="drug-header"><h3>★ AMICACINA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content">Similar à gentamicina, mas com maior resistência a enzimas modificadoras de aminoglicosídeos → espectro mais amplo para cepas resistentes. Atividade contra M. tuberculosis MDR.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções por Gram− resistente à gentamicina: Pseudomonas MDR, Acinetobacter MDR</li>
+      <li>TB multirresistente (MDR-TB) — segunda linha</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Gram− grave resistente</td><td>15–20 mg/kg</td><td>IV</td><td>1×/dia</td><td>Monitorar; ajustar em IR</td></tr>
+      <tr><td>TB-MDR</td><td>15 mg/kg</td><td>IV/IM</td><td>5–7×/sem.</td><td>Ajustar ClCr</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Prática:</strong> Amicacina = aminoglicosídeo de "reserva". Usar quando gentamicina falha. Mesma vigilância de nefro/ototoxicidade.</div>
+</div>
+
+<div id="fluoro" class="section-header navy" style="margin-top:36px;"><h2>IV. FLUOROQUINOLONAS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição da DNA girase (topoisomerase II) e topoisomerase IV → bactericidas concentração-dependentes com PAE prolongado. Excelente biodisponibilidade oral (~100%) — equivalência IV/VO.</div>
+</div>
+
+<div id="cipro" class="drug-card" data-tags="gram-,pseudomonas,itu,prostatite,osso,dst" data-name="cipro">
+  <div class="drug-header common"><h3>⭐ CIPROFLOXACINO</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram − aeróbios: EXCELENTE — E. coli, Klebsiella, Pseudomonas, Proteus, Salmonella, Shigella, Campylobacter, H. influenzae, Neisseria</li>
+      <li class="danger">Gram +: FRACO — S. pneumoniae (não confiável), S. aureus (resistência crescente)</li>
+      <li class="danger">NÃO cobre: MRSA, anaeróbios, Streptococcus</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>ITU complicada e pielonefrite (quando sensibilidade confirmada)</li>
+      <li>Prostatite bacteriana (excelente penetração prostática)</li>
+      <li>Infecções por Pseudomonas: pneumonia, ITU, osso</li>
+      <li>Febre tifoide, gastroenterite grave por Salmonella/Shigella</li>
+      <li>Osteomielite crônica por Gram−</li>
+      <li>Antraz (Bacillus anthracis) — 1ª escolha pós-exposição</li>
+      <li>Profilaxia de meningite meningocócica (500 mg dose única)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>ITU complicada / pielonefrite</td><td>500 mg</td><td>VO</td><td>12/12h × 7d</td><td>ClCr &lt;30: 250–500 mg 18/18h</td></tr>
+      <tr><td>Prostatite aguda</td><td>500 mg</td><td>VO</td><td>12/12h × 28d</td><td>Ajustar ClCr &lt;30</td></tr>
+      <tr><td>Pseudomonas grave</td><td>400 mg</td><td>IV</td><td>8/8h</td><td>Ajustar ClCr</td></tr>
+      <tr><td>Profilaxia meningococo</td><td>500 mg</td><td>VO</td><td>Dose única</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Tendinite/ruptura tendão de Aquiles — especialmente idoso, corticosteroide, IRC</li>
+      <li class="danger">Prolongamento QT; fotossensibilidade</li>
+      <li>Convulsões (cuidado em epilépticos)</li>
+      <li class="warning">Aortopatia/dissecção aórtica — sinal de segurança FDA</li>
+      <li>Artropatia em cartilagem (&lt;18 anos — exceto situações específicas)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Menores de 18 anos (exceto fibrose cística, antraz)</li>
+      <li>Gestação (categoria C — artropatia fetal)</li>
+      <li>QT longo</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>ARMADILHA:</strong> Ciprofloxacino NÃO cobre S. pneumoniae de forma confiável — NUNCA usar para PAC como monoterapia. Para PAC: quinolona respiratória (levofloxacino/moxifloxacino).</div>
+  <div class="tip-box"><strong>💡 Prostatite:</strong> Ciprofloxacino penetra excelentemente no tecido prostático → 28 dias para prostatite bacteriana crônica.</div>
+</div>
+
+<div id="levo" class="drug-card" data-tags="gram+,gram-,atipicos,pseudomonas,pneumonia,itu,tb" data-name="levo">
+  <div class="drug-header common"><h3>⭐ LEVOFLOXACINO (quinolona respiratória)</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. pneumoniae (excelente, inclusive PRSP), S. aureus MSSA</li>
+      <li class="good">Atípicos: Legionella, Mycoplasma, Chlamydophila (excelente)</li>
+      <li class="good">Gram −: E. coli, Klebsiella, H. influenzae; Pseudomonas (atividade moderada)</li>
+      <li>M. tuberculosis (2ª linha)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>PAC ambulatorial ou internada (monoterapia — quinolona respiratória)</li>
+      <li>Exacerbação infecciosa de DPOC grave</li>
+      <li>Sinusite bacteriana aguda refratária</li>
+      <li>Pneumonia nosocomial sem Pseudomonas de alto risco</li>
+      <li>ITU complicada / pielonefrite (alternativa)</li>
+      <li>TB resistente (MDR/XDR) — segunda linha</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>PAC ambulatorial</td><td>500 mg</td><td>VO</td><td>1×/dia × 7–10d</td><td>ClCr 20–49: 500 mg ataque → 250 mg/dia; &lt;20: 500 mg → 125 mg/dia</td></tr>
+      <tr><td>PAC internada grave</td><td>750 mg</td><td>IV/VO</td><td>1×/dia × 5–7d</td><td>Ajustar ClCr</td></tr>
+      <tr><td>ITU complicada</td><td>250–500 mg</td><td>VO</td><td>1×/dia × 7–10d</td><td>Ajustar ClCr</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Tendinite/ruptura tendão (classe quinolona)</li>
+      <li class="danger">Prolongamento QT (maior que ciprofloxacino)</li>
+      <li class="warning">Hipoglicemia — especialmente com sulfoniluréias</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Diferença com moxifloxacino:</strong> Levofloxacino TEM atividade anti-Pseudomonas e excreção urinária ativa. Moxifloxacino NÃO tem — exclusivo respiratório/sistêmico.</div>
+</div>
+
+<div id="moxi" class="drug-card" data-tags="gram+,anaerobios,atipicos,pneumonia" data-name="moxi">
+  <div class="drug-header"><h3>★ MOXIFLOXACINO (quinolona respiratória)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. pneumoniae (excelente), S. aureus MSSA</li>
+      <li class="good">Atípicos: Legionella, Mycoplasma, Chlamydia (excelente)</li>
+      <li class="good">Anaeróbios: Bacteroides fragilis (única quinolona com atividade)</li>
+      <li class="danger">SEM atividade: Pseudomonas aeruginosa</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>PAC (1ª linha como monoterapia — dose única/dia)</li>
+      <li>Exacerbação infecciosa de DPOC</li>
+      <li>Sinusite bacteriana</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>PAC / sinusite</td><td>400 mg</td><td>VO/IV</td><td>1×/dia × 5–10d</td><td>Sem ajuste renal (excreção hepática)</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Prolongamento QT: MAIOR que levofloxacino e ciprofloxacino</li>
+      <li class="warning">Hepatotoxicidade</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>CRÍTICO:</strong> Moxifloxacino NÃO usar para ITU ou Pseudomonas — sem excreção urinária ativa e sem cobertura de Pseudomonas. O mais arritmogênico da classe.</div>
+</div>
+
+<div id="tetra" class="section-header navy" style="margin-top:36px;"><h2>V. TETRACICLINAS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição reversível da síntese proteica por ligação à subunidade 30S, impedindo ligação do aminoacil-tRNA ao sítio A. Bacteriostáticos. NÃO usar com leite, antiácidos, ferro — quelação reduz absorção. Depósito em dentes/ossos em formação.</div>
+</div>
+
+<div id="doxiciclina" class="drug-card" data-tags="gram+,gram-,atipicos,mrsa,rickettsia,dst-clamidija,dst,lyme,malaria,acne" data-name="doxiciclina">
+  <div class="drug-header common"><h3>⭐ DOXICICLINA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Atípicos: Mycoplasma, Chlamydophila, Chlamydia trachomatis, Rickettsia spp. (droga de escolha)</li>
+      <li class="good">Borrelia burgdorferi (Lyme)</li>
+      <li class="good">Treponema pallidum (alternativa em alérgicos — exceto gestante)</li>
+      <li>Gram +: Streptococcus (resistência crescente), S. aureus MSSA</li>
+      <li>Gram − variável: H. influenzae, Vibrio cholerae, Brucella, Yersinia pestis</li>
+      <li class="danger">NÃO cobre: Pseudomonas, Klebsiella, MRSA, anaeróbios</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li><strong>Rickettsioses / Febre Maculosa Brasileira — 1ª escolha (iniciar imediatamente!)</strong></li>
+      <li>Doença de Lyme: artrite de Lyme, cardite — 1ª escolha</li>
+      <li>Chlamydia trachomatis: uretrite, cervicite (7 dias)</li>
+      <li>Pneumonia atípica (Mycoplasma, Chlamydophila) — alternativa à azitromicina</li>
+      <li>Sífilis em alérgicos a penicilina (exceto gestante)</li>
+      <li>Acne vulgar moderada-grave</li>
+      <li>Malária: profilaxia e tratamento combinado</li>
+      <li>Brucelose (com rifampicina ou estreptomicina)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>PAC ambulatorial / atípicos</td><td>100 mg</td><td>VO</td><td>12/12h × 5–7d</td><td>Sem ajuste (excreção biliar)</td></tr>
+      <tr><td>Rickettsiose / Lyme artrite</td><td>100 mg</td><td>VO</td><td>12/12h × 14–21d</td><td>Sem ajuste</td></tr>
+      <tr><td>Chlamydia genital</td><td>100 mg</td><td>VO</td><td>12/12h × 7d</td><td>—</td></tr>
+      <tr><td>Profilaxia malária</td><td>100 mg</td><td>VO</td><td>1×/dia (2d antes até 4 sem após)</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Fotossensibilidade — usar protetor solar</li>
+      <li class="warning">Esofagite/úlcera esofagiana — tomar com bastante água, não deitar após</li>
+      <li class="danger">Distúrbio do esmalte dentário e crescimento ósseo (fetos, &lt;8 anos)</li>
+      <li>Pseudotumor cerebri (raro)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Gestação (2º e 3º trimestres)</li>
+      <li>Crianças &lt;8 anos (exceto FMB grave)</li>
+      <li>Não administrar com laticínios, antiácidos, ferro/zinco</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>FMB — EMERGÊNCIA:</strong> Suspeita clínica de febre maculosa → doxiciclina IMEDIATAMENTE, sem aguardar confirmação sorológica. Rash petequial + febre + epidemiologia = tratar. Mortalidade colapsa com tratamento precoce.</div>
+  <div class="tip-box"><strong>💡 Prova:</strong> Única exceção para uso em &lt;8 anos: FMB grave — o risco de não tratar supera o risco de efeitos nos dentes.</div>
+</div>
+
+<div id="sulfa" class="section-header navy" style="margin-top:36px;"><h2>VI. SULFONAMIDAS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: SMX inibe diidropteroato sintetase; TMP inibe diidropteroato redutase (DHFR). Duplo bloqueio sequencial da síntese de folato → efeito sinérgico bactericida.</div>
+</div>
+
+<div id="tmp-smx" class="drug-card" data-tags="gram+,gram-,mrsa,itu,pcp,nocardia" data-name="tmp-smx">
+  <div class="drug-header common"><h3>⭐ SULFAMETOXAZOL + TRIMETOPRIMA (SMX-TMP / Cotrimoxazol)</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. aureus MSSA e MRSA comunitário (pele/partes moles), Listeria, Nocardia</li>
+      <li class="good">Gram −: E. coli, Klebsiella, H. influenzae, Stenotrophomonas maltophilia (1ª escolha!)</li>
+      <li class="good">Pneumocystis jirovecii (PCP) — droga de escolha</li>
+      <li class="good">Toxoplasma gondii (profilaxia primária)</li>
+      <li class="danger">NÃO cobre: Pseudomonas, anaeróbios, atípicos</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Pneumocistose (PCP) em HIV/imunossuprimidos — tratamento e profilaxia</li>
+      <li>CA-MRSA (furunculose, celulite comunitária)</li>
+      <li>ITU não complicada (quando antibiograma confirma sensibilidade)</li>
+      <li>Nocardiose (terapia prolongada 6–12 meses)</li>
+      <li>Stenotrophomonas maltophilia — 1ª escolha</li>
+      <li>Profilaxia de infecções oportunistas em HIV (CD4 &lt;200)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>ITU não complicada</td><td>160/800 mg (1 cp DS)</td><td>VO</td><td>12/12h × 3d</td><td>ClCr 10–30: ½ dose; &lt;10: evitar</td></tr>
+      <tr><td>CA-MRSA pele/partes moles</td><td>160/800 mg</td><td>VO</td><td>12/12h × 7–10d</td><td>Ajustar ClCr</td></tr>
+      <tr><td>PCP tratamento (IV)</td><td>15–20 mg/kg/dia (TMP)</td><td>IV/VO</td><td>6/6h ou 8/8h × 21d</td><td>Ajuste obrigatório</td></tr>
+      <tr><td>Profilaxia PCP/toxo</td><td>160/800 mg</td><td>VO</td><td>1×/dia ou 3×/sem.</td><td>ClCr &lt;30: dose reduzida</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Hiperpotassemia — TMP bloqueia canais Na+ no túbulo coletivo (efeito similar à amilorida)</li>
+      <li class="warning">Aumento de creatinina — TMP bloqueia secreção tubular de creatinina (sem queda real do FG)</li>
+      <li class="danger">Stevens-Johnson (rash grave — hipersensibilidade)</li>
+      <li>Discrasias sanguíneas (leucopenia, trombocitopenia, anemia megaloblástica)</li>
+      <li>Fotossensibilidade; hepatotoxicidade</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Gestação (1º tri: teratogenicidade TMP; 3º tri: kernicterus neonatal)</li>
+      <li>Neonatos (&lt;2 meses)</li>
+      <li>ClCr &lt;15 mL/min</li>
+      <li>Deficiência de G6PD</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 Hiperpotassemia:</strong> TMP bloqueia canais de sódio no néfron distal → retém potássio. Monitorar K+ em pacientes com IR, IECA/BRA, heparina.</div>
+  <div class="tip-box"><strong>💡 Stenotrophomonas:</strong> Naturalmente resistente a carbapenêmicos. TMP-SMX = 1ª escolha. Importante em UTI.</div>
+</div>
+
+<div id="glico" class="section-header navy" style="margin-top:36px;"><h2>VII. GLICOPEPTÍDEOS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Ligação ao dipeptídeo terminal D-Ala-D-Ala do peptidoglicano, impedindo transpeptidação e transglicosilação. Bactericidas lentos. APENAS Gram+ (molécula grande não atravessa membrana externa de Gram−).</div>
+</div>
+
+<div id="vancomicina" class="drug-card" data-tags="gram+,mrsa,endocardite,meningite,c-difficile" data-name="vancomicina">
+  <div class="drug-header common"><h3>⭐ VANCOMICINA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram + EXCLUSIVAMENTE: MRSA (1ª escolha), MSSA, Enterococcus, Streptococcus, S. coagulase-negativo</li>
+      <li class="good">C. difficile (via oral — efeito luminal apenas)</li>
+      <li class="danger">NÃO cobre: Gram−, VRSA, VRE VanA (resistente)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>MRSA: bacteremia, endocardite, pneumonia, osteomielite (1ª escolha)</li>
+      <li>Infecções graves por estafilococos coagulase-negativo (próteses, cateteres)</li>
+      <li>Meningite nosocomial por S. aureus / resistente</li>
+      <li>C. difficile grave ou recorrente (VO — apenas efeito luminal)</li>
+      <li>Infecções graves por Gram+ em alérgicos a beta-lactâmicos</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Monitorização</th></tr>
+      <tr><td>MRSA grave (AUC-guided)</td><td>25–30 mg/kg ataque, depois 15–20 mg/kg</td><td>IV</td><td>8/8h ou 12/12h</td><td>TDM: meta AUC24/MIC 400–600 mg.h/L</td></tr>
+      <tr><td>C. difficile grave (VO)</td><td>125 mg</td><td>VO</td><td>6/6h × 10d</td><td>—</td></tr>
+      <tr><td>Meningite MRSA</td><td>15–20 mg/kg</td><td>IV</td><td>8/8h ou 12/12h</td><td>Monitorar nível</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Nefrotoxicidade — risco aumentado com aminoglicosídeos, diuréticos de alça, níveis elevados</li>
+      <li class="warning">Red Man Syndrome: eritema, prurido, hipotensão durante infusão rápida — NÃO é anafilaxia (liberação de histamina); reduzir velocidade de infusão</li>
+      <li>Ototoxicidade (rara com monitorização adequada)</li>
+      <li>Trombocitopenia, neutropenia (uso prolongado)</li>
+    </ul></div></div>
+  </div>
+  <div class="tip-box"><strong>💡 MSSA bacterêmico:</strong> Se MRSA vira MSSA no antibiograma → trocar vancomicina por oxacilina. Estudo clássico: oxacilina é superior à vancomicina para MSSA (menor mortalidade).</div>
+  <div class="tip-box"><strong>💡 Red Man Syndrome:</strong> Não é alergia — é efeito de infusão rápida. Solução: infundir em ≥60–90 min. Pré-medicação com anti-histamínico.</div>
+  <div class="tip-box"><strong>💡 Vancomicina VO:</strong> ZERO atividade sistêmica. Usada exclusivamente para C. difficile (efeito tópico intestinal).</div>
+</div>
+
+<div id="teicoplanina" class="drug-card" data-tags="gram+,mrsa,endocardite,osso" data-name="teicoplanina">
+  <div class="drug-header"><h3>★ TEICOPLANINA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content">Igual à vancomicina + atividade em alguns VanB Enterococcus. Meia-vida muito longa (70–100h) — dose única/dia após ataque.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content">Infecções MRSA, S. coagulase-negativo, endocardite por Gram+, infecções osteoarticulares.</div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções graves</td><td>400 mg (ataque: 3 doses × 12h)</td><td>IV/IM</td><td>Ataque 12/12h × 3d, depois 1×/dia</td><td>Ampliar intervalo em IR</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 Vantagem:</strong> Administração IM possível e dose única diária. Monitorar vale: &gt;10 µg/mL (infecções gerais), &gt;20 µg/mL (endocardite, osso).</div>
+</div>
+
+<div id="oxa" class="section-header navy" style="margin-top:36px;"><h2>VIII. OXAZOLIDINONAS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição da síntese proteica por ligação ao sítio P da subunidade 50S, impedindo formação do complexo de iniciação 70S. Único mecanismo que bloqueia o INÍCIO da tradução. Bacteriostáticos para maioria. Reserva para Gram+ multirresistentes.</div>
+</div>
+
+<div id="linezolida" class="drug-card" data-tags="gram+,mrsa,vre,pneumonia,tb" data-name="linezolida">
+  <div class="drug-header"><h3>★ LINEZOLIDA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">MRSA, VRSA, VISA (excelente)</li>
+      <li class="good">VRE — 1ª escolha</li>
+      <li class="good">Streptococcus, S. pneumoniae PRSP</li>
+      <li class="good">Nocardia, M. tuberculosis MDR/XDR</li>
+      <li class="danger">NÃO cobre: Gram−, Pseudomonas, anaeróbios Gram−</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>VRE (infecções graves por Enterococcus resistente a vancomicina) — 1ª escolha</li>
+      <li>Pneumonia nosocomial por MRSA — preferível à vancomicina</li>
+      <li>TB MDR/XDR — esquemas de resgate</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções graves VRE / MRSA pneumonia</td><td>600 mg</td><td>IV/VO</td><td>12/12h</td><td>Sem ajuste renal (metabolismo hepático)</td></tr>
+      <tr><td>TB resistente (combinado)</td><td>600 mg</td><td>VO</td><td>1×/dia ou 12/12h</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">MIELOSSUPRESSÃO: trombocitopenia, anemia, leucopenia — monitorar hemograma semanalmente</li>
+      <li class="danger">SÍNDROME SEROTONINÉRGICA: inibidor MAO irreversível — interage com ISRS, IRSN, IMAO, triptofano → hipertermia, agitação, mioclonias, instabilidade autonômica</li>
+      <li class="warning">Neuropatia periférica e ótica (uso &gt;28 dias)</li>
+      <li>Acidose lática (disfunção mitocondrial — uso prolongado)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>Uso concomitante de ISRS/IRSN: CONTRAINDICADO — síndrome serotoninérgica</li>
+      <li>Limitar uso a 28 dias quando possível</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>ZEPHYR 2012 (NEJM):</strong> Linezolida superior à vancomicina em MRSA pneumonia (melhor penetração pulmonar). Mas para bacteremia grave: vancomicina ou daptomicina (linezolida é bacteriostático).</div>
+  <div class="alert-box"><strong>ISRS + Linezolida = SÍNDROME SEROTONINÉRGICA.</strong> Linezolida é inibidor MAO não seletivo reversível. Clássica armadilha de prova.</div>
+</div>
+
+<div id="linco" class="section-header navy" style="margin-top:36px;"><h2>IX. LINCOSAMIDAS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Inibição da síntese proteica por ligação ao sítio A/P da subunidade 50S (mesmo sítio que macrolídeos e estreptograminas — resistência cruzada MLSB possível). Bacteriostáticos. Excelente penetração óssea e em abscessos.</div>
+</div>
+
+<div id="clindamicina" class="drug-card" data-tags="gram+,anaerobios,mrsa,osso,pele,pneumonia,malaria" data-name="clindamicina">
+  <div class="drug-header common"><h3>⭐ CLINDAMICINA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: S. aureus MSSA e alguns CA-MRSA, Streptococcus spp. incluindo GAS</li>
+      <li class="good">Anaeróbios: EXCELENTE — B. fragilis, Prevotella, Clostridium (exceto C. difficile), Peptostreptococcus, Fusobacterium</li>
+      <li class="good">Protozoários: Plasmodium (com quinina), Toxoplasma (com pirimetamina)</li>
+      <li class="danger">NÃO cobre: MRSA hospitalar (variável), Gram−, Enterococcus, C. difficile</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Anaeróbios: pneumonia aspirativa, abscesso pulmonar, intra-abdominal</li>
+      <li>CA-MRSA: infecção de pele/partes moles (verificar D-test!)</li>
+      <li>Fasciíte necrosante (combinada) — inibe toxinas estafilocócicas/estreptocócicas</li>
+      <li>Osteomielite/artrite séptica por Gram+ (excelente penetração óssea)</li>
+      <li>Malária grave com quinina IV</li>
+      <li>Toxoplasmose cerebral em HIV (alternativa)</li>
+      <li>PCP leve-moderada (clindamicina + primaquina)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções leves-moderadas</td><td>300–450 mg</td><td>VO</td><td>6/6h ou 8/8h</td><td>Sem ajuste renal (hepático)</td></tr>
+      <tr><td>Infecções graves</td><td>600–900 mg</td><td>IV</td><td>8/8h</td><td>Sem ajuste renal</td></tr>
+      <tr><td>Fasciíte necrosante (anti-toxina)</td><td>900 mg</td><td>IV</td><td>8/8h + beta-lactâmico</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">COLITE PSEUDOMEMBRANOSA (C. difficile): risco ALTO — um dos principais precipitantes. Suspender imediatamente se diarreia.</li>
+      <li>Diarreia não-C. difficile (frequente)</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>D-TEST OBRIGATÓRIO para CA-MRSA:</strong> Se disco de eritromicina + clindamicina mostra halo achatado em "D" → resistência induzível (MLSB induzível). NÃO usar clindamicina.</div>
+  <div class="tip-box"><strong>💡 Fasciíte necrosante:</strong> Clindamicina não é a cobertura principal — sua função é INIBIR PRODUÇÃO DE TOXINAS (proteína M estreptocócica, TSST-1 estafilocócico). Combinar com beta-lactâmico.</div>
+</div>
+
+<div id="nitro" class="section-header navy" style="margin-top:36px;"><h2>X. NITROIMIDAZÓIS</h2></div>
+<div class="drug-card" style="border-radius:0 0 0 0; border-top:none;">
+<div class="section-intro">Mecanismo geral: Pró-fármaco ativado por redução intracelular em organismos anaeróbios/microaerofílicos. Nitroanion radical formado danifica o DNA. Bactericida concentração-dependente. Atividade restrita a anaeróbios estritos e protozoários.</div>
+</div>
+
+<div id="metronidazol" class="drug-card" data-tags="anaerobios,c-difficile,parasita,intraabdominal,dst" data-name="metronidazol">
+  <div class="drug-header common"><h3>⭐ METRONIDAZOL</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Anaeróbios ESTRITOS: B. fragilis, C. difficile, C. perfringens, Prevotella, Fusobacterium (excelente)</li>
+      <li class="good">Protozoários: Giardia lamblia, Entamoeba histolytica, Trichomonas vaginalis (droga de escolha)</li>
+      <li class="good">H. pylori (esquemas de erradicação)</li>
+      <li class="danger">NÃO cobre: aeróbios, Gram+, Gram−, atípicos</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções anaeróbias: intra-abdominais, pélvicas, abscesso cerebral, pulmonar</li>
+      <li>C. difficile leve-moderada (VO)</li>
+      <li>Vaginose bacteriana (VO ou gel vaginal)</li>
+      <li>Tricomoníase vaginal (dose única ou 7 dias)</li>
+      <li>Giardíase, amebíase intestinal e extra-intestinal</li>
+      <li>H. pylori — esquemas tríplice/quádruplo</li>
+      <li>Abscesso cerebral (combinado — excelente penetração SNC)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Infecções intra-abdominais</td><td>500 mg</td><td>IV/VO</td><td>8/8h</td><td>Sem ajuste significativo</td></tr>
+      <tr><td>C. difficile leve-moderada</td><td>500 mg</td><td>VO</td><td>8/8h × 10d</td><td>—</td></tr>
+      <tr><td>Vaginose bacteriana</td><td>500 mg</td><td>VO</td><td>12/12h × 7d</td><td>—</td></tr>
+      <tr><td>Tricomoníase (dose única)</td><td>2 g</td><td>VO</td><td>Dose única</td><td>—</td></tr>
+      <tr><td>Giardíase</td><td>250 mg</td><td>VO</td><td>8/8h × 5–7d</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Efeito dissulfiram-like com ÁLCOOL: rubor, vômito, palpitações — evitar álcool durante e 48h após</li>
+      <li>Náusea, vômito, gosto metálico (muito frequente)</li>
+      <li class="warning">Neuropatia periférica (uso prolongado)</li>
+      <li class="warning">Encefalopatia (alta dose, IR grave, crítico)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>1º trimestre de gestação (relativa)</li>
+      <li>Álcool concomitante (e até 48h após)</li>
+      <li>Potencializa anticoagulantes cumarínicos — aumenta INR</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>REGRA FUNDAMENTAL:</strong> Metronidazol ZERO atividade em aeróbios. Para infecções intra-abdominais polimicrobianas: SEMPRE combinar com cobertura Gram− (ceftriaxona, ciprofloxacino, pip-tazo, carbapenêmico).</div>
+  <div class="tip-box"><strong>💡 C. difficile:</strong> Metronidazol VO aceito apenas para infecção LEVE (Leu &lt;15.000, Cr &lt;1,5× basal). Infecção grave ou recorrência → vancomicina VO ou fidaxomicina.</div>
+  <div class="tip-box"><strong>💡 Tricomoníase:</strong> Tratar o(a) parceiro(a) — reinfecção é principal causa de falha. Dose única de 2 g equivalente ao esquema de 7 dias.</div>
+</div>
+
+<div id="outros" class="section-header navy" style="margin-top:36px;"><h2>XI. OUTROS ANTIBIÓTICOS RELEVANTES</h2></div>
+
+<div id="sub-polimixinas" class="section-header blue" style="margin-top:8px;"><h2>XI.A — Polimixinas</h2></div>
+<div id="polimixina" class="drug-card" data-tags="gram-,pseudomonas,acinetobacter,xdr,kpc" data-name="polimixina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header"><h3>★ POLIMIXINA B / COLISTINA (Polimixina E)</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Detergente catiônico: liga-se ao LPS da membrana externa de Gram−, desorganiza a membrana → lise osmótica. Bactericida concentração-dependente.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram − XDR: Pseudomonas, Acinetobacter baumannii, Klebsiella KPC, MBL (NDM, VIM)</li>
+      <li class="danger">NÃO cobre: Gram+, anaeróbios, Proteus, Serratia, Stenotrophomonas (resistentes por natureza)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções por Gram− XDR: Acinetobacter MDR, Klebsiella KPC, Pseudomonas MDR — terapia de último recurso</li>
+      <li>SEMPRE em combinação (meropeném, rifampicina, fosfomicina, tigeciclina) — monoterapia = maior mortalidade</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Fármaco</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Polimixina B IV</td><td>1,25–1,5 MUI</td><td>IV</td><td>12/12h</td><td>SEM ajuste renal (não excretada pelos rins)</td></tr>
+      <tr><td>Colistina IV (colistimetato)</td><td>2,5–5 mg/kg/dia base</td><td>IV</td><td>Dividido 8/8h ou 12/12h</td><td>OBRIGATÓRIO ajustar em IR (excretada pelos rins)</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">NEFROTOXICIDADE: LTA — frequente (20–40%), dose-dependente</li>
+      <li class="warning">Neurotoxicidade: parestesias, fraqueza muscular, bloqueio neuromuscular</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>DIFERENÇA CRÍTICA — Polimixina B vs Colistina:</strong> Polimixina B = sem excreção renal = SEM ajuste em IR. Colistina (colistimetato) = pró-fármaco excretado pelos rins = ajuste OBRIGATÓRIO em IR. Clássica questão de prova!</div>
+</div>
+
+<div id="sub-lipopeptideos" class="section-header blue" style="margin-top:16px;"><h2>XI.B — Lipopeptídeos Cíclicos</h2></div>
+<div id="daptomicina" class="drug-card" data-tags="gram+,mrsa,vre,endocardite" data-name="daptomicina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header"><h3>★ DAPTOMICINA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inserção na membrana citoplasmática de Gram+ dependente de Ca²+ → despolarização → saída de K+ → inibição de DNA/RNA/proteínas → morte. Bactericida concentração-dependente. INATIVADA por surfactante pulmonar.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram + EXCLUSIVAMENTE: MRSA, VRSA, VISA, VRE, S. aureus, Enterococcus</li>
+      <li class="danger">NÃO cobre: Gram−, anaeróbios</li>
+      <li class="danger">INATIVA para pneumonia (surfactante pulmonar neutraliza)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Bacteremia por S. aureus (MRSA e MSSA) — especialmente MIC elevado de vancomicina</li>
+      <li>Endocardite infecciosa por S. aureus lado direito — 1ª escolha</li>
+      <li>VRE: infecções graves</li>
+      <li>Infecção de pele e partes moles por Gram+</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Pele/partes moles</td><td>4 mg/kg</td><td>IV</td><td>1×/dia</td><td>ClCr &lt;30: a cada 48h</td></tr>
+      <tr><td>Bacteremia / endocardite</td><td>6–10 mg/kg</td><td>IV</td><td>1×/dia</td><td>ClCr &lt;30: a cada 48h</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">MIOPATIA / RABDOMIÓLISE: monitorar CK semanalmente; suspender se CK &gt;10× ou sintomas</li>
+      <li>Suspender estatinas durante uso</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>ARMADILHA CLÁSSICA — Daptomicina para pneumonia = ERRADO.</strong> O surfactante pulmonar inativa a daptomicina. Para MRSA pneumonia: linezolida &gt; vancomicina (estudo ZEPHYR).</div>
+</div>
+
+<div id="sub-glicilciclinas" class="section-header blue" style="margin-top:16px;"><h2>XI.C — Glicilciclinas</h2></div>
+<div id="tigeciclina" class="drug-card" data-tags="gram+,gram-,anaerobios,esbl,intraabdominal,pele,acinetobacter" data-name="tigeciclina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header"><h3>★ TIGECICLINA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram +: MRSA, VRE, S. pneumoniae</li>
+      <li class="good">Gram −: Enterobactérias incluindo ESBL, Acinetobacter baumannii</li>
+      <li class="good">Anaeróbios: excelente</li>
+      <li class="danger">NÃO cobre: Pseudomonas (bombas de efluxo), Proteus, Morganella, Providencia</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Infecções intra-abdominais polimicrobianas (incluindo ESBL)</li>
+      <li>Pele e partes moles complicadas</li>
+      <li>Acinetobacter MDR (em combinação com polimixina)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Ataque</td><td>100 mg</td><td>IV</td><td>Dose única</td><td>Sem ajuste renal</td></tr>
+      <tr><td>Manutenção</td><td>50 mg</td><td>IV</td><td>12/12h × 5–14d</td><td>Ajuste em Child C</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Náusea e vômito MUITO frequentes (30–50%) — principal causa de descontinuação</li>
+      <li class="warning">Sinal FDA: possível aumento de mortalidade em pneumonia nosocomial vs comparadores</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>Tigeciclina e mortalidade:</strong> Meta-análises mostraram aumento de mortalidade vs comparadores em pneumonia nosocomial. Usar preferencialmente para intra-abdominal e pele. Evitar como monoterapia em pneumonia grave.</div>
+</div>
+
+<div id="sub-fosfomicina" class="section-header blue" style="margin-top:16px;"><h2>XI.D — Fosfomicina</h2></div>
+<div id="fosfomicina" class="drug-card" data-tags="gram+,gram-,mrsa,esbl,itu" data-name="fosfomicina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header"><h3>★ FOSFOMICINA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inibição da MurA (primeira enzima da síntese de peptidoglicano). Estrutura única — sem resistência cruzada com outras classes. Bactericida.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">Gram −: E. coli (incluindo ESBL — excelente oral), Klebsiella, Pseudomonas (combinação)</li>
+      <li class="good">Gram +: S. aureus MSSA/MRSA (combinação), Enterococcus faecalis</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>ITU não complicada feminina: fosfomicina 3 g dose única VO — excelente eficácia/conveniência</li>
+      <li>Bacteriúria na gestante (segura)</li>
+      <li>IV: infecções graves multirresistentes em combinação (MRSA, KPC, VRE)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>ITU não complicada</td><td>3 g (trometamol)</td><td>VO</td><td>Dose única</td><td>Cuidado ClCr &lt;10</td></tr>
+      <tr><td>Infecção grave IV (combinado)</td><td>4–8 g</td><td>IV</td><td>8/8h</td><td>Ajustar em IR</td></tr>
+    </table></div>
+  </div>
+  <div class="tip-box"><strong>💡 ITU:</strong> Fosfomicina 3 g dose única = 1ª linha para cistite feminina (junto à nitrofurantoína e TMP-SMX). Dose única, boa atividade mesmo em ESBL, menor impacto no microbioma.</div>
+</div>
+
+<div id="sub-nitrofurantoina" class="section-header blue" style="margin-top:16px;"><h2>XI.E — Nitrofurantoína</h2></div>
+<div id="nitrofurantoina" class="drug-card" data-tags="gram+,gram-,itu" data-name="nitrofurantoina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header common"><h3>⭐ NITROFURANTOÍNA</h3><span class="badge-common">USO MUITO COMUM</span></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Radicais reativos que danificam DNA, RNA, proteínas bacterianas. Bactericida APENAS na urina — sem atividade sistêmica.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">E. coli (excelente, resistência baixa), S. saprophyticus, Enterococcus</li>
+      <li class="danger">NÃO cobre: Pseudomonas, Proteus, Serratia, Klebsiella (variável)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Cistite não complicada feminina — 1ª escolha</li>
+      <li>Bacteriúria na gestante (1º e 2º trimestres)</li>
+      <li>Profilaxia de ITU recorrente</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Cistite não complicada</td><td>100 mg (macrocristal)</td><td>VO</td><td>12/12h × 5d</td><td>ClCr &lt;30: CONTRAINDICADA</td></tr>
+      <tr><td>Profilaxia ITU recorrente</td><td>50–100 mg</td><td>VO</td><td>1×/noite</td><td>ClCr &lt;30: contraindicada</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="danger">Pneumonite de hipersensibilidade (aguda) e fibrose pulmonar (uso crônico)</li>
+      <li class="warning">Neuropatia periférica (uso prolongado, IR)</li>
+      <li>Hemólise em G6PD</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content"><ul>
+      <li>ClCr &lt;30 mL/min — não atinge concentrações urinárias terapêuticas + toxicidade aumentada</li>
+      <li>Pielonefrite/infecção sistêmica — CONTRAINDICADA (sem penetração tecidual)</li>
+      <li>3º trimestre gestação e trabalho de parto</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>REGRA:</strong> Nitrofurantoína EXCLUSIVA para cistite (bexiga). JAMAIS para pielonefrite, prostatite ou infecção sistêmica — não concentra em tecido renal ou sangue.</div>
+</div>
+
+<div id="sub-rifamicinas" class="section-header blue" style="margin-top:16px;"><h2>XI.F — Rifamicinas</h2></div>
+<div id="rifampicina" class="drug-card" data-tags="gram+,tb,profilaxia,meningite" data-name="rifampicina" style="border-radius:0 0 10px 10px; border-top:none;">
+  <div class="drug-header"><h3>★ RIFAMPICINA</h3></div>
+  <div class="drug-body">
+    <div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">Inibição da RNA polimerase DNA-dependente bacteriana (subunidade β) → bloqueia transcrição. Bactericida. Excelente penetração intracelular e em biofilme. Potente indutor de CYP3A4 e CYP2C9.</div></div>
+    <div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content"><ul>
+      <li class="good">M. tuberculosis (base do esquema RIPE)</li>
+      <li class="good">N. meningitidis e H. influenzae tipo b (profilaxia)</li>
+      <li class="good">S. aureus (atividade — nunca monoterapia)</li>
+      <li class="good">M. leprae (hanseníase)</li>
+    </ul></div></div>
+    <div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content"><ul>
+      <li>Tuberculose ativa — esquema RIPE (R+I+P+E × 2m, depois R+I × 4m)</li>
+      <li>Hanseníase</li>
+      <li>Profilaxia de meningite meningocócica em contatos</li>
+      <li>Profilaxia de H. influenzae b em contatos</li>
+      <li>S. aureus em próteses (combinada — NUNCA monoterapia)</li>
+    </ul></div></div>
+    <div class="dose-table-wrap"><table class="dose-table">
+      <tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>
+      <tr><td>Tuberculose</td><td>10 mg/kg/dia (máx 600 mg)</td><td>VO</td><td>1×/dia em jejum</td><td>Sem ajuste (hepático)</td></tr>
+      <tr><td>Profilaxia meningococo</td><td>600 mg</td><td>VO</td><td>12/12h × 2d</td><td>—</td></tr>
+      <tr><td>Profilaxia H. influenzae b</td><td>600 mg</td><td>VO</td><td>1×/dia × 4d</td><td>—</td></tr>
+    </table></div>
+    <div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content"><ul>
+      <li class="warning">Coloração laranja-avermelhada de urina, suor, lágrimas (NORMAL — alertar paciente)</li>
+      <li class="danger">Hepatotoxicidade — monitorar TGO/TGP, especialmente com isoniazida</li>
+      <li class="danger">Indutor potente CYP3A4/2C9: ↓ anticoagulantes, contraceptivos orais, antirretrovirais, corticoides, imunossupressores, estatinas</li>
+    </ul></div></div>
+  </div>
+  <div class="alert-box"><strong>INTERAÇÃO CRÍTICA:</strong> Rifampicina + anticoncepcionais hormonais = FALHA CONTRACEPTIVA. Usar método barreira obrigatoriamente. Alertar toda paciente em uso de rifampicina.</div>
+  <div class="tip-box"><strong>💡 Nunca monoterapia para S. aureus:</strong> Resistência emerge rapidamente. Usar apenas em combinação com beta-lactâmico ou vancomicina em infecções de próteses.</div>
+</div>
+
+<div id="quickref" class="section-header navy" style="margin-top:36px;"><h2>XII. TABELA DE REFERÊNCIA RÁPIDA — INDICAÇÕES CHAVE</h2></div>
+<div class="drug-card" style="border-radius:0 0 10px 10px; border-top:none; padding:0;">
+  <table class="quick-ref-table">
+    <tr><th>Situação clínica</th><th>1ª Escolha</th><th>Alternativa / Observação</th></tr>
+    <tr><td>PAC ambulatorial (jovem, sem comorbidades)</td><td>Amoxicilina VO</td><td>Doxiciclina ou Azitromicina</td></tr>
+    <tr><td>PAC ambulatorial c/ comorbidades / DPOC</td><td>Amox-clavulanato + Azitromicina OU Levofloxacino</td><td>Moxifloxacino VO</td></tr>
+    <tr><td>PAC internada (não UTI)</td><td>Ceftriaxona IV + Azitromicina VO/IV</td><td>Levofloxacino IV</td></tr>
+    <tr><td>PAC grave (UTI, sem Pseudomonas)</td><td>Ceftriaxona IV + Azitromicina IV</td><td>Levofloxacino/Moxifloxacino IV</td></tr>
+    <tr><td>Meningite bacteriana comunitária (adulto)</td><td>Ceftriaxona IV + Dexametasona</td><td>Ampicilina se suspeita de Listeria (idoso/imuno)</td></tr>
+    <tr><td>ITU não complicada (cistite)</td><td>Nitrofurantoína VO OU Fosfomicina 3 g dose única</td><td>TMP-SMX ou Ciprofloxacino (verificar resistência local)</td></tr>
+    <tr><td>Pielonefrite internada</td><td>Ceftriaxona IV</td><td>Ciprofloxacino IV; Pip-Tazo se resistência suspeita</td></tr>
+    <tr><td>Sepse comunitária Gram−</td><td>Ceftriaxona IV</td><td>Pip-Tazo se Pseudomonas suspeita</td></tr>
+    <tr><td>Sepse nosocomial / VAP</td><td>Pip-Tazo ou Cefepima ± Vancomicina</td><td>Meropeném se ESBL suspeita</td></tr>
+    <tr><td>Infecção MRSA grave</td><td>Vancomicina IV (TDM)</td><td>Daptomicina (bacteremia); Linezolida (pneumonia)</td></tr>
+    <tr><td>Endocardite S. aureus MSSA</td><td>Oxacilina IV</td><td>Cefazolina IV (alergia penicilina leve)</td></tr>
+    <tr><td>Sífilis (todos estágios exceto neuro)</td><td>Pen. G benzatina IM</td><td>Doxiciclina VO (alérgicos — exceto gestante)</td></tr>
+    <tr><td>Neurossífilis</td><td>Pen. G cristalina IV × 10–14d</td><td>Dessensibilização em gestante alérgica</td></tr>
+    <tr><td>Gonorreia cervical/uretral</td><td>Ceftriaxona 500 mg IM dose única</td><td>+ Azitromicina se coinfecção clamídia suspeita</td></tr>
+    <tr><td>Chlamydia trachomatis genital</td><td>Doxiciclina 100 mg 12/12h × 7d</td><td>Azitromicina 1 g dose única</td></tr>
+    <tr><td>Infecção intra-abdominal comunitária</td><td>Ceftriaxona + Metronidazol</td><td>Amox-clavulanato ou Pip-Tazo</td></tr>
+    <tr><td>Infecção intra-abdominal grave / ESBL</td><td>Meropeném IV</td><td>Ertapeném (sem suspeita de Pseudomonas)</td></tr>
+    <tr><td>Febre maculosa / Rickettsiose</td><td>Doxiciclina VO (IMEDIATAMENTE — não aguardar confirmação)</td><td>Cloranfenicol (gestante, criança &lt;8a grave)</td></tr>
+    <tr><td>C. difficile leve-moderada</td><td>Metronidazol VO 500 mg 8/8h × 10d</td><td>Vancomicina VO 125 mg 6/6h (preferível)</td></tr>
+    <tr><td>C. difficile grave</td><td>Vancomicina VO 125 mg 6/6h × 10d</td><td>Fidaxomicina VO (menor recorrência)</td></tr>
+    <tr><td>PCP (Pneumocistose)</td><td>TMP-SMX IV/VO</td><td>Clindamicina + Primaquina (alternativa)</td></tr>
+    <tr><td>Tricomoníase vaginal</td><td>Metronidazol 2 g VO dose única</td><td>Tinidazol 2 g dose única</td></tr>
+    <tr><td>Vaginose bacteriana</td><td>Metronidazol 500 mg VO 12/12h × 7d</td><td>Clindamicina vaginal</td></tr>
+    <tr><td>Febre neutropênica alto risco</td><td>Cefepima IV OU Pip-Tazo IV</td><td>Meropeném se instabilidade ou MDR suspeita</td></tr>
+    <tr><td>Endocardite enterocócica</td><td>Ampicilina + Gentamicina IV</td><td>Vancomicina + Gentamicina (alérgicos)</td></tr>
+    <tr><td>VRE (infecção grave)</td><td>Linezolida IV</td><td>Daptomicina IV</td></tr>
+    <tr><td>KPC / Gram− XDR</td><td>Polimixina B + Meropeném ± Fosfomicina IV</td><td>Esquemas baseados em antibiograma institucional</td></tr>
+  </table>
+</div>
+
+<div style="background:var(--light-gray,#f5f5f5); border:1px solid var(--border,#dee2e6); border-radius:8px; padding:14px 20px; margin:24px 0; font-size:12px; color:#666; text-align:center;">
+  ⚠️ Material de uso educacional. Doses devem ser individualizadas conforme peso, função renal/hepática, comorbidades, alergias e antibiograma institucional. Não substitui julgamento clínico individualizado.
+</div>
+
+</div><div id="add-drug-overlay" onclick="if(event.target===this)closeAddDrug()">
+<div id="add-drug-modal">
+  <h2>➕ Adicionar Novo Fármaco</h2>
+  
+  <div class="modal-field">
+    <label>Nome do fármaco *</label>
+    <input id="nd-name" type="text" placeholder="Ex: Linezolida" />
+  </div>
+
+  <div class="modal-row">
+    <div class="modal-field">
+      <label>Classe Principal *</label>
+      <select id="nd-class" onchange="onClassChange(this)">
+        <option value="beta">I. Beta-lactâmicos</option>
+        <option value="macro">II. Macrolídeos</option>
+        <option value="amino">III. Aminoglicosídeos</option>
+        <option value="fluoro">IV. Fluoroquinolonas</option>
+        <option value="tetra">V. Tetraciclinas</option>
+        <option value="sulfa">VI. Sulfonamidas</option>
+        <option value="glico">VII. Glicopeptídeos</option>
+        <option value="oxa">VIII. Oxazolidinonas</option>
+        <option value="linco">IX. Lincosamidas</option>
+        <option value="nitro">X. Nitroimidazóis</option>
+        <option value="outros">XI. Outros Antibióticos Relevantes</option>
+        <option disabled>──────────────</option>
+        <option value="__new__">＋ Criar nova classe...</option>
+      </select>
+      <div id="nd-new-class-wrap" style="display:none; margin-top:8px;">
+        <input id="nd-new-class-name" type="text" placeholder="Nome da nova classe (ex: Antifúngicos)" style="width:100%;padding:7px 10px;border:1.5px solid #2E75B6;border-radius:6px;font-size:13px;font-family:inherit;" />
+        <div style="font-size:11px;color:#888;margin-top:4px;">Será criado um cabeçalho e link na barra de navegação.</div>
+      </div>
+    </div>
+
+    <div class="modal-field" id="nd-subclass-field">
+      <label>Subclasse (Opcional)</label>
+      <select id="nd-subclass" onchange="onSubclassChange(this)">
+        <option value="">-- Nenhuma (Direto na classe) --</option>
+      </select>
+      <div id="nd-new-subclass-wrap" style="display:none; margin-top:8px;">
+        <input id="nd-new-subclass-name" type="text" placeholder="Nome da nova subclasse (ex: Penicilinas)" style="width:100%;padding:7px 10px;border:1.5px solid #2E75B6;border-radius:6px;font-size:13px;font-family:inherit;" />
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-field">
+    <label>Mecanismo de ação</label>
+    <textarea id="nd-mec" placeholder="Ex: Inibição das PBPs..."></textarea>
+  </div>
+  <div class="modal-field">
+    <label>Espectro de ação</label>
+    <textarea id="nd-spec" placeholder="Gram +, Gram -, anaeróbios, MRSA, Pseudomonas..."></textarea>
+  </div>
+  <div class="modal-field">
+    <label>Indicações clínicas</label>
+    <textarea id="nd-ind" placeholder="ITU, pneumonia, infecção de pele..."></textarea>
+  </div>
+  <div class="modal-field">
+    <label>Doses (uma por linha: Indicação | Dose | Via | Intervalo | Ajuste renal)</label>
+    <div id="nd-doses-wrap">
+      <div class="dose-row-input">
+        <input type="text" placeholder="Indicação" class="dr-ind"/>
+        <input type="text" placeholder="Dose" style="max-width:90px" class="dr-dose"/>
+        <input type="text" placeholder="Via" style="max-width:60px" class="dr-via"/>
+        <input type="text" placeholder="Intervalo" style="max-width:100px" class="dr-int"/>
+        <input type="text" placeholder="Ajuste renal" class="dr-renal"/>
+        <button onclick="addDoseRow()">＋</button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-field">
+    <label>Efeitos adversos principais</label>
+    <textarea id="nd-adv" placeholder="Um por linha..."></textarea>
+  </div>
+  <div class="modal-field">
+    <label>Contraindicações / precauções</label>
+    <textarea id="nd-contra" placeholder="Um por linha..."></textarea>
+  </div>
+  <div class="modal-field">
+    <label>💡 Dica clínica / prova</label>
+    <textarea id="nd-tip" placeholder="Dica importante..."></textarea>
+  </div>
+  <div class="modal-field">
+    <label>Tags de filtro (separadas por vírgula)</label>
+    <input id="nd-tags" type="text" placeholder="gram+,gram-,itu,pneumonia,mrsa..." />
+  </div>
+  <div class="modal-field">
+    <label>
+      <input type="checkbox" id="nd-common" style="width:auto;margin-right:6px;">
+      Marcar como USO MUITO COMUM (⭐)
+    </label>
+  </div>
+  <div class="modal-actions">
+    <button onclick="closeAddDrug()">Cancelar</button>
+    <button class="btn-primary" onclick="insertNewDrug()">✓ Adicionar ao Vademécum</button>
+  </div>
+</div>
+</div>
+
+
+<div id="hl-toolbar" role="toolbar" aria-label="Marcatexto">
+  <div class="hl-swatch" style="background:#fff176" data-color="hl-yellow" title="Amarelo" onclick="hlApply('hl-yellow')"></div>
+  <div class="hl-swatch" style="background:#b9f6ca" data-color="hl-green"  title="Verde"   onclick="hlApply('hl-green')"></div>
+  <div class="hl-swatch" style="background:#b3e5fc" data-color="hl-blue"   title="Azul"    onclick="hlApply('hl-blue')"></div>
+  <div class="hl-swatch" style="background:#f8bbd0" data-color="hl-pink"   title="Rosa"    onclick="hlApply('hl-pink')"></div>
+  <div class="hl-swatch" style="background:#ffe0b2" data-color="hl-orange" title="Laranja" onclick="hlApply('hl-orange')"></div>
+  <div class="hl-swatch" style="background:#e1bee7" data-color="hl-purple" title="Roxo"    onclick="hlApply('hl-purple')"></div>
+  <div class="hl-sep"></div>
+  <div class="hl-erase" title="Apagar marcação" onclick="hlErase()">✕</div>
+</div>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Voltar ao topo">&#8679;</button>
+
+
+<script>
+(function() {
+  // SCRIPT DE COLAPSO E ESTADOS
+  var COLLAPSE_STORE_KEY = 'vadecum_collapsed_sections';
+
+  function getCollapsedState() {
+    try { return JSON.parse(localStorage.getItem(COLLAPSE_STORE_KEY) || '{}'); } catch(e) { return {}; }
+  }
+
+  function saveCollapsedState(state) {
+    try { localStorage.setItem(COLLAPSE_STORE_KEY, JSON.stringify(state)); } catch(e) {}
+  }
+
+  function getSectionContent(header) {
+    var elements = [];
+    var next = header.nextElementSibling;
+    var isMainSection = header.classList.contains('navy');
+    var stopClass = isMainSection ? '.section-header.navy' : '.section-header';
+    
+    while (next && !next.matches(stopClass)) {
+      elements.push(next);
+      next = next.nextElementSibling;
+    }
+    return elements;
+  }
+
+  function expandSection(header) {
+    if (!header) return;
+    header.classList.remove('collapsed');
+    var content = getSectionContent(header);
+    content.forEach(function(el) {
+      el.style.display = '';
+      if (el.classList && el.classList.contains('section-header')) {
+        el.classList.remove('collapsed');
+        getSectionContent(el).forEach(function(subEl) { subEl.style.display = ''; });
+      }
+    });
+    if (header.id) {
+      var state = getCollapsedState();
+      delete state[header.id];
+      saveCollapsedState(state);
+    }
+  }
+
+  function collapseSection(header) {
+    if (!header) return;
+    header.classList.add('collapsed');
+    var content = getSectionContent(header);
+    content.forEach(function(el) {
+      el.style.display = 'none';
+      if (el.classList && el.classList.contains('section-header')) {
+        el.classList.add('collapsed');
+        getSectionContent(el).forEach(function(subEl) { subEl.style.display = 'none'; });
+      }
+    });
+    if (header.id) {
+      var state = getCollapsedState();
+      state[header.id] = true;
+      saveCollapsedState(state);
+    }
+  }
+
+  function toggleSection(header) {
+    if (header.classList.contains('collapsed')) expandSection(header);
+    else collapseSection(header);
+  }
+
+  function applyCollapsedState() {
+    var state = getCollapsedState();
+    document.querySelectorAll('.section-header').forEach(function(header) {
+      if (header.classList.contains('collapsed')) {
+        header.classList.remove('collapsed');
+        getSectionContent(header).forEach(function(el) { el.style.display = ''; });
+      }
+    });
+    Object.keys(state).forEach(function(sectionId) {
+      if (state[sectionId] === true) {
+        var header = document.getElementById(sectionId);
+        if (header && header.classList.contains('section-header')) collapseSection(header);
+      }
+    });
+  }
+
+  window.addCollapseIcons = function() {
+    document.querySelectorAll('.section-header').forEach(function(header) {
+      if (header.querySelector('.collapse-icon')) return;
+      var h2 = header.querySelector('h2');
+      if (h2) {
+        var icon = document.createElement('span');
+        icon.className = 'collapse-icon';
+        icon.innerHTML = '▼';
+        icon.setAttribute('aria-label', 'Colapsar/Expandir');
+        h2.insertBefore(icon, h2.firstChild);
+      }
+      header.removeEventListener('click', header._collapseHandler);
+      header._collapseHandler = function(e) {
+        if (e.target.tagName === 'A' || e.target.classList.contains('delete-section-btn')) return;
+        toggleSection(header);
+      };
+      header.addEventListener('click', header._collapseHandler);
+    });
+  };
+
+  window.expandAllSections = function() {
+    document.querySelectorAll('.section-header').forEach(function(header) { expandSection(header); });
+    document.querySelectorAll('.drug-card.collapsed').forEach(function(card) { card.classList.remove('collapsed'); });
+    localStorage.setItem('vadecum_collapsed_drugs', JSON.stringify({})); 
+    saveCollapsedState({}); 
+  };
+
+  window.collapseAllSections = function() {
+    document.querySelectorAll('.section-header').forEach(function(header) { collapseSection(header); });
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    window.addCollapseIcons();
+    applyCollapsedState();
+  });
+
+  var observer = new MutationObserver(function(mutations) {
+    var hasNewHeaders = false;
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1 && (node.classList?.contains('section-header') || node.querySelector?.('.section-header'))) {
+          hasNewHeaders = true;
+        }
+      });
+    });
+    if (hasNewHeaders) {
+      window.addCollapseIcons();
+      applyCollapsedState();
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+
+
+// FILTROS E BUSCA (Atualizado para esconder intros)
+(function(){
+  var activeFilters = new Set();
+  var searchTerm = '';
+  function normalize(s){ return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+
+  function applyFilters(){
+    var cards = document.querySelectorAll('.drug-card[data-tags]');
+    var intros = document.querySelectorAll('.drug-card:not([data-tags])'); // Pega os cards de introdução
+    var visible = 0;
+    var q = normalize(searchTerm.trim());
+
+    cards.forEach(function(card){
+      var tags = card.getAttribute('data-tags') || '';
+      var text = normalize(card.innerText);
+      var name = normalize(card.id || '');
+
+      var passFilter = activeFilters.size === 0 || [...activeFilters].every(function(f){
+        return tags.indexOf(f) !== -1;
+      });
+      var passSearch = !q || text.indexOf(q) !== -1 || name.indexOf(q) !== -1;
+
+      if(passFilter && passSearch){
+        card.classList.remove('filtered-out');
+        visible++;
+        if(q) highlightText(card, q);
+        else clearHighlight(card);
+      } else {
+        card.classList.add('filtered-out');
+        clearHighlight(card);
+      }
+    });
+
+    // SE HOUVER BUSCA/FILTRO, OCULTA AS INTRODUÇÕES
+    intros.forEach(function(intro) {
+      if (activeFilters.size > 0 || q) {
+        intro.style.display = 'none';
+      } else {
+        intro.style.display = '';
+      }
+    });
+
+    var info = document.getElementById('results-info');
+    var noRes = document.getElementById('no-results');
+    if(activeFilters.size > 0 || q){
+      info.style.display = 'block';
+      info.textContent = visible + ' antibiótico(s) encontrado(s)' + (q ? ' para "'+searchTerm+'"' : '') + (activeFilters.size>0?' com filtros ativos':'');
+      noRes.style.display = visible === 0 ? 'block' : 'none';
+    } else {
+      info.style.display = 'none';
+      noRes.style.display = 'none';
+    }
+
+    hideEmptySections();
+  }
+
+  function hideEmptySections(){
+    document.querySelectorAll('.section-header').forEach(function(hdr){
+      var next = hdr.nextElementSibling;
+      var hasVisible = false;
+      while(next){
+        if(next.classList.contains('section-header')) break;
+        if(next.classList.contains('drug-card') && !next.classList.contains('filtered-out') && next.hasAttribute('data-tags')){
+          hasVisible = true; break;
+        }
+        next = next.nextElementSibling;
+      }
+      if(activeFilters.size > 0 || searchTerm.trim()){
+        hdr.style.display = hasVisible ? '' : 'none';
+      } else {
+        hdr.style.display = '';
+      }
+    });
+  }
+
+  function highlightText(card, q){
+    clearHighlight(card);
+    var walker = document.createTreeWalker(card, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(function(node){
+      var parent = node.parentNode;
+      if(parent && parent.tagName === 'SCRIPT') return;
+      var idx = normalize(node.nodeValue).indexOf(q);
+      if(idx === -1) return;
+      var before = node.nodeValue.slice(0, idx);
+      var match  = node.nodeValue.slice(idx, idx + q.length);
+      var after  = node.nodeValue.slice(idx + q.length);
+      var span = document.createElement('mark');
+      span.className = 'search-highlight';
+      span.textContent = match;
+      var frag = document.createDocumentFragment();
+      if(before) frag.appendChild(document.createTextNode(before));
+      frag.appendChild(span);
+      if(after) frag.appendChild(document.createTextNode(after));
+      parent.replaceChild(frag, node);
+    });
+  }
+
+  function clearHighlight(card){
+    card.querySelectorAll('mark.search-highlight').forEach(function(m){
+      var parent = m.parentNode;
+      parent.replaceChild(document.createTextNode(m.textContent), m);
+      parent.normalize();
+    });
+  }
+
+  window.toggleFilter = function(btn){
+    var f = btn.getAttribute('data-filter');
+    if(activeFilters.has(f)){
+      activeFilters.delete(f);
+      btn.classList.remove('active');
+    } else {
+      activeFilters.add(f);
+      btn.classList.add('active');
+    }
+    applyFilters();
+  };
+
+  window.clearSearch = function(){
+    document.getElementById('search-input').value = '';
+    searchTerm = '';
+    document.getElementById('search-clear').style.display = 'none';
+    applyFilters();
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    var inp = document.getElementById('search-input');
+    var clr = document.getElementById('search-clear');
+    inp.addEventListener('input', function(){
+      searchTerm = this.value;
+      clr.style.display = searchTerm ? 'block' : 'none';
+      applyFilters();
+    });
+    inp.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') window.clearSearch();
+    });
+  });
+})();
+
+
+// MODO DE EDIÇÃO, CORES, HIGHLIGHTER E SALVAMENTO
+(function(){
+  var STORE_KEY = 'vadecum_edits_v2';
+  var editMode = false;
+  var editableSelector = ['.drug-section-content','.drug-section-label','.drug-header h3','.section-intro','.tip-box','.alert-box','.warn-box','.dose-table td','.dose-table th','.quick-ref-table td','.cover .subtitle','.cover .sub2','.cover .legend'].join(',');
+
+  window._editableCounter = window._editableCounter || 0;
+  window._assignKeys = function(root = document) {
+    root.querySelectorAll(editableSelector).forEach(function(el) {
+      if (el.hasAttribute('data-editable')) return;
+      var card = el.closest('.drug-card');
+      var prefix = card ? (card.id || 'drug') : 'global';
+      var tag = el.tagName.toLowerCase();
+      var cls = (el.className || '').replace(/\s+/g, '-').substring(0, 20);
+      window._editableCounter++;
+      el.setAttribute('data-editable', prefix + '--' + tag + '.' + cls + '__' + window._editableCounter);
+    });
+  };
+
+  function getEdits() { try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e) { return {}; } }
+  window.saveEdits = function() {
+    var edits = {};
+    document.querySelectorAll('[data-editable]').forEach(function(el) {
+      var key = el.getAttribute('data-editable');
+      if (key) edits[key] = el.innerHTML;
+    });
+    localStorage.setItem(STORE_KEY, JSON.stringify(edits));
+
+    var customList = [];
+    try { customList = JSON.parse(localStorage.getItem('vadecum_custom_drugs') || '[]'); } catch(ee) {}
+    if (customList.length) {
+      customList.forEach(function(item) {
+        var card = document.getElementById(item.id);
+        if (!card) return;
+        var clone = card.cloneNode(true);
+        var delBtn = clone.querySelector('.delete-drug-btn');
+        if (delBtn) delBtn.remove();
+        item.html = clone.outerHTML;
+      });
+      localStorage.setItem('vadecum_custom_drugs', JSON.stringify(customList));
+    }
+    var flash = document.getElementById('saved-flash');
+    if(flash){
+      flash.style.display = 'inline';
+      setTimeout(function() { flash.style.display = 'none'; }, 1800);
+    }
+  };
+
+  function applyEdits() {
+    var edits = getEdits();
+    Object.keys(edits).forEach(function(key) {
+      var el = document.querySelector('[data-editable="' + key + '"]');
+      if (el) el.innerHTML = edits[key];
+    });
+  }
+
+  var dirty = false;
+  function markDirty() { dirty = true; }
+  function autoSave() { if (dirty) { window.saveEdits(); dirty = false; } }
+  window.saveNow = function() { window.saveEdits(); };
+
+  window.toggleEdit = function() {
+    editMode = !editMode;
+    document.body.classList.toggle('edit-mode', editMode);
+    var btn = document.getElementById('btn-toggle');
+    btn.textContent = editMode ? 'Modo Edição: ON' : 'Modo Edição: OFF';
+    btn.classList.toggle('active', editMode);
+    var status = document.getElementById('edit-status');
+    
+    if (editMode) {
+      document.querySelectorAll('[data-editable]').forEach(function(el) {
+        el.setAttribute('contenteditable', 'true');
+        el.addEventListener('blur', autoSave);
+        el.addEventListener('input', markDirty);
+      });
+      status.textContent = 'Clique em qualquer texto azul tracejado para editar';
+      showDeleteBtns();
+    } else {
+      document.querySelectorAll('[data-editable]').forEach(function(el) {
+        el.removeAttribute('contenteditable');
+      });
+      status.textContent = 'Edição pausada. Alterações salvas.';
+      hideDeleteBtns();
+      window.saveEdits();
+    }
+  };
+
+  window.exportHTML = function() {
+    window.saveEdits();
+    var clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll('[data-editable]').forEach(function(el) { el.removeAttribute('contenteditable'); });
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var blob = new Blob([html], {type: 'text/html'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'vademecum_antibioticos_editado.html';
+    a.click();
+  };
+
+  window.resetAll = function() {
+    if (!confirm('Apagar TODAS as edições e restaurar o conteúdo original?')) return;
+    localStorage.clear();
+    location.reload();
+  };
+
+  // BOTÕES DE DELETAR E LÓGICA DE EXCLUSÃO DE CLASSES
+  function addDeleteBtn(card) {
+    if (!card || card.querySelector('.delete-drug-btn')) return;
+    var btn = document.createElement('button');
+    btn.className = 'delete-drug-btn';
+    btn.innerHTML = '🗑 Remover fármaco';
+    btn.onclick = function(e) {
+      e.stopPropagation(); e.preventDefault();
+      if (!confirm('Remover este fármaco do vademécum?')) return;
+      var drugId = card.id;
+      if (card.hasAttribute('data-custom')) {
+        var stored = JSON.parse(localStorage.getItem('vadecum_custom_drugs') || '[]');
+        stored = stored.filter(d => d.id !== drugId);
+        localStorage.setItem('vadecum_custom_drugs', JSON.stringify(stored));
+      }
+      var edits = JSON.parse(localStorage.getItem('vadecum_edits_v2') || '{}');
+      var newEdits = {};
+      Object.keys(edits).forEach(function(key) { if (!key.startsWith(drugId + '--')) newEdits[key] = edits[key]; });
+      localStorage.setItem('vadecum_edits_v2', JSON.stringify(newEdits));
+      
+      card.style.opacity = '0';
+      setTimeout(function() { card.remove(); }, 300);
+    };
+    card.appendChild(btn);
+  }
+
+  function addBalloonDeleteBtn(box){
+    if(box.querySelector('.delete-balloon-btn')) return;
+    var btn = document.createElement('button');
+    btn.className = 'delete-balloon-btn';
+    btn.textContent = '✕';
+    btn.onclick = function(e){
+      e.stopPropagation();
+      if(!confirm('Remover este balão?')) return;
+      box.style.opacity = '0';
+      setTimeout(function(){ box.remove(); window.saveEdits(); }, 260);
+    };
+    box.insertBefore(btn, box.firstChild);
+  }
+
+  function addSectionDeleteBtn(header) {
+    var h2 = header.querySelector('h2');
+    if (!h2 || h2.querySelector('.delete-section-btn')) return;
+    var btn = document.createElement('button');
+    btn.className = 'delete-section-btn';
+    btn.innerHTML = '🗑 Excluir';
+    btn.title = 'Excluir esta classe/subclasse e TODO seu conteúdo';
+    btn.onclick = function(e) {
+      e.stopPropagation();
+      var titleText = h2.textContent.replace('▼','').replace('🗑 Excluir','').trim();
+      if (!confirm('ATENÇÃO: Excluir a seção "' + titleText + '" apagará também TODOS os fármacos e tópicos dentro dela.\nTem certeza absoluta?')) return;
+
+      var isNavy = header.classList.contains('navy');
+      var toRemove = [header];
+      var next = header.nextElementSibling;
+
+      while (next) {
+        if (next.classList.contains('section-header')) {
+          if (isNavy) { if (next.classList.contains('navy')) break; } 
+          else { break; }
+        }
+        toRemove.push(next);
+        next = next.nextElementSibling;
+      }
+
+      // Limpa dados customizados afetados
+      var storedCustomDrugs = JSON.parse(localStorage.getItem('vadecum_custom_drugs') || '[]');
+      toRemove.forEach(function(el) {
+        if (el.id && el.classList.contains('drug-card')) storedCustomDrugs = storedCustomDrugs.filter(d => d.id !== el.id);
+      });
+      localStorage.setItem('vadecum_custom_drugs', JSON.stringify(storedCustomDrugs));
+
+      if (!isNavy) {
+         var storedSubs = JSON.parse(localStorage.getItem('vadecum_custom_subclasses') || '[]');
+         storedSubs = storedSubs.filter(s => s.id !== header.id);
+         localStorage.setItem('vadecum_custom_subclasses', JSON.stringify(storedSubs));
+      } else {
+         var navLink = document.querySelector('.nav a[href="#' + header.id + '"]');
+         if (navLink) navLink.remove();
+         var storedClasses = JSON.parse(localStorage.getItem('vadecum_custom_classes') || '[]');
+         storedClasses = storedClasses.filter(c => c.slug !== header.id);
+         localStorage.setItem('vadecum_custom_classes', JSON.stringify(storedClasses));
+      }
+
+      toRemove.forEach(el => el.remove());
+      window.saveEdits();
+    };
+    h2.appendChild(btn);
+  }
+
+  function showDeleteBtns(){
+    document.querySelectorAll('.drug-card[data-tags]').forEach(addDeleteBtn);
+    document.querySelectorAll('.delete-drug-btn').forEach(b => b.style.display='block');
+    document.querySelectorAll('.tip-box, .alert-box, .warn-box').forEach(addBalloonDeleteBtn);
+    document.querySelectorAll('.section-header').forEach(addSectionDeleteBtn);
+  }
+  function hideDeleteBtns(){
+    document.querySelectorAll('.delete-drug-btn').forEach(b => b.style.display='none');
+    document.querySelectorAll('.delete-section-btn').forEach(b => b.remove());
+  }
+
+  // LÓGICA DE SUBCLASSES NO MODAL
+  window.onClassChange = function(sel){
+    var wrap = document.getElementById('nd-new-class-wrap');
+    if(sel.value === '__new__') {
+      wrap.style.display = 'block';
+      document.getElementById('nd-subclass').innerHTML = '<option value="">-- Nenhuma --</option>';
+    } else {
+      wrap.style.display = 'none';
+      window.populateSubclasses(sel.value);
+    }
+  };
+
+  window.onSubclassChange = function(sel){
+    var wrap = document.getElementById('nd-new-subclass-wrap');
+    if(sel.value === '__new__') wrap.style.display = 'block';
+    else wrap.style.display = 'none';
+  };
+
+  window.populateSubclasses = function(classId) {
+    var subSel = document.getElementById('nd-subclass');
+    subSel.innerHTML = '<option value="">-- Nenhuma (Direto na classe) --</option>';
+    if (!classId || classId === '__new__') return;
+
+    var classHdr = document.getElementById(classId);
+    if (classHdr) {
+      var next = classHdr.nextElementSibling;
+      while (next && !next.classList.contains('navy')) {
+        if (next.classList.contains('section-header')) {
+          var opt = document.createElement('option');
+          opt.value = next.id;
+          opt.textContent = next.querySelector('h2') ? next.querySelector('h2').textContent.replace('▼','').replace('🗑 Excluir','').trim() : next.textContent;
+          subSel.appendChild(opt);
+        }
+        next = next.nextElementSibling;
+      }
+    }
+    var newOpt = document.createElement('option');
+    newOpt.value = '__new__';
+    newOpt.textContent = '＋ Criar nova subclasse...';
+    subSel.appendChild(newOpt);
+  };
+
+  window.openAddDrug = function(){
+    document.getElementById('add-drug-overlay').classList.add('open');
+    window.populateSubclasses(document.getElementById('nd-class').value);
+  };
+  window.closeAddDrug = function(){ document.getElementById('add-drug-overlay').classList.remove('open'); };
+  
+  function createOrGetClass(className){
+    var slug = 'class-' + className.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    if(document.getElementById(slug)) return slug;
+
+    var hdr = document.createElement('div');
+    hdr.id = slug;
+    hdr.className = 'section-header navy';
+    hdr.style.marginTop = '36px';
+    hdr.innerHTML = '<h2>' + className + '</h2>';
+
+    var quickref = document.getElementById('quickref');
+    if(quickref) quickref.parentNode.insertBefore(hdr, quickref);
+    else document.querySelector('.container').appendChild(hdr);
+
+    updateNav(slug, className);
+    addClassToSelect(slug, className);
+
+    var classes = [];
+    try { classes = JSON.parse(localStorage.getItem('vadecum_custom_classes') || '[]'); } catch(e){}
+    classes.push({ slug: slug, name: className });
+    localStorage.setItem('vadecum_custom_classes', JSON.stringify(classes));
+
+    return slug;
+  }
+
+  function createOrGetSubclass(parentClassId, subClassName){
+    var slug = 'sub-' + subClassName.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') + '-' + Date.now().toString(36);
+    if(document.getElementById(slug)) return slug;
+
+    var hdr = document.createElement('div');
+    hdr.id = slug;
+    hdr.className = 'section-header blue';
+    hdr.style.marginTop = '16px';
+    hdr.innerHTML = '<h2>' + subClassName + '</h2>';
+
+    var parent = document.getElementById(parentClassId);
+    var insertAfter = null;
+    if (parent) {
+      var el = parent.nextElementSibling;
+      while (el && !el.classList.contains('navy')) {
+        insertAfter = el;
+        el = el.nextElementSibling;
+      }
+    }
+
+    if (insertAfter) insertAfter.after(hdr);
+    else if (parent) parent.after(hdr);
+    else document.querySelector('.container').appendChild(hdr);
+
+    if (window.addCollapseIcons) window.addCollapseIcons();
+
+    var subs = [];
+    try { subs = JSON.parse(localStorage.getItem('vadecum_custom_subclasses') || '[]'); } catch(e){}
+    subs.push({ id: slug, parentId: parentClassId, html: hdr.outerHTML });
+    localStorage.setItem('vadecum_custom_subclasses', JSON.stringify(subs));
+
+    return slug;
+  }
+
+  window.insertNewDrug = function(){
+    var name = document.getElementById('nd-name').value.trim();
+    if(!name){ alert('O nome do fármaco é obrigatório.'); return; }
+    
+    var cls    = document.getElementById('nd-class').value;
+    var subCls = document.getElementById('nd-subclass').value;
+    var mec    = document.getElementById('nd-mec').value.trim();
+    var spec   = document.getElementById('nd-spec').value.trim();
+    var ind    = document.getElementById('nd-ind').value.trim();
+    var adv    = document.getElementById('nd-adv').value.trim();
+    var contra = document.getElementById('nd-contra').value.trim();
+    var tip    = document.getElementById('nd-tip').value.trim();
+    var tags   = document.getElementById('nd-tags').value.trim();
+    var common = document.getElementById('nd-common').checked;
+
+    if(cls === '__new__'){
+      var newClassName = document.getElementById('nd-new-class-name').value.trim();
+      if(!newClassName){ alert('Digite o nome da nova classe.'); return; }
+      cls = createOrGetClass(newClassName);
+      document.getElementById('nd-new-class-name').value = '';
+      document.getElementById('nd-new-class-wrap').style.display = 'none';
+      var sel2 = document.getElementById('nd-class');
+      for(var oi=0; oi<sel2.options.length; oi++){
+        if(sel2.options[oi].value === cls){ sel2.selectedIndex = oi; break; }
+      }
+    }
+
+    if(subCls === '__new__'){
+      var newSubName = document.getElementById('nd-new-subclass-name').value.trim();
+      if(!newSubName){ alert('Digite o nome da nova subclasse.'); return; }
+      subCls = createOrGetSubclass(cls, newSubName);
+      document.getElementById('nd-new-subclass-name').value = '';
+      document.getElementById('nd-new-subclass-wrap').style.display = 'none';
+    }
+
+    var doseRows = [];
+    document.querySelectorAll('#nd-doses-wrap .dose-row-input').forEach(function(row){
+      var cells = [ row.querySelector('.dr-ind').value.trim(), row.querySelector('.dr-dose').value.trim(), row.querySelector('.dr-via').value.trim(), row.querySelector('.dr-int').value.trim(), row.querySelector('.dr-renal').value.trim() ];
+      if(cells[0]||cells[1]) doseRows.push(cells);
+    });
+
+    var slug = name.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-+/g, '-') + '-' + Date.now().toString(36);
+    var headerCls = common ? 'drug-header common' : 'drug-header';
+    var badge  = common ? '<span class="badge-common">USO MUITO COMUM</span>' : '';
+    
+    function listHtml(text){ return text ? '<ul>'+text.split('\n').filter(Boolean).map(l=>'<li>'+l+'</li>').join('')+'</ul>' : ''; }
+    function tableRows(rows){ return rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join(''); }
+
+    var card = document.createElement('div');
+    card.id = slug; card.className = 'drug-card';
+    card.setAttribute('data-tags', tags||'custom'); card.setAttribute('data-name', slug); card.setAttribute('data-custom', '1');
+    card.innerHTML = '<div class="'+headerCls+'"><h3>'+(common?'⭐':'★')+' '+name.toUpperCase()+'</h3>'+badge+'</div>'
+      +'<div class="drug-body">'
+      +(mec   ?'<div class="drug-section"><div class="drug-section-label">Mecanismo</div><div class="drug-section-content">'+mec+'</div></div>':'')
+      +(spec  ?'<div class="drug-section"><div class="drug-section-label">Espectro</div><div class="drug-section-content">'+listHtml(spec)+'</div></div>':'')
+      +(ind   ?'<div class="drug-section"><div class="drug-section-label">Indicações</div><div class="drug-section-content">'+listHtml(ind)+'</div></div>':'')
+      +(doseRows.length?'<div class="dose-table-wrap"><table class="dose-table"><tr><th>Indicação</th><th>Dose</th><th>Via</th><th>Intervalo</th><th>Ajuste Renal</th></tr>'+tableRows(doseRows)+'</table></div>':'')
+      +(adv   ?'<div class="drug-section"><div class="drug-section-label">Efeitos Adversos</div><div class="drug-section-content">'+listHtml(adv)+'</div></div>':'')
+      +(contra?'<div class="drug-section"><div class="drug-section-label">Contraindicações</div><div class="drug-section-content">'+listHtml(contra)+'</div></div>':'')
+      +'</div>' + (tip?'<div class="tip-box"><strong>💡 Dica:</strong> '+tip+'</div>':'');
+
+    var targetSection = subCls || cls;
+    var anchor = document.getElementById(targetSection);
+    var insertAfter = null;
+    if(anchor){
+      var el = anchor.nextElementSibling;
+      while(el && !el.classList.contains('section-header')){
+        if(el.classList.contains('drug-card') || el.classList.contains('section-intro')) insertAfter = el;
+        el = el.nextElementSibling;
+      }
+    }
+    if(insertAfter) insertAfter.after(card);
+    else if(anchor) anchor.after(card);
+    else document.querySelector('.container').appendChild(card);
+
+    window._assignKeys(card);
+    if(document.body.classList.contains('edit-mode')){
+      card.querySelectorAll('[data-editable]').forEach(el => el.setAttribute('contenteditable','true'));
+      addDeleteBtn(card);
+    }
+    
+    var stored = JSON.parse(localStorage.getItem('vadecum_custom_drugs')||'[]');
+    stored.push({ id:slug, html:card.outerHTML, section:targetSection });
+    localStorage.setItem('vadecum_custom_drugs', JSON.stringify(stored));
+
+    card.scrollIntoView({ behavior:'smooth', block:'start' });
+    closeAddDrug();
+    ['nd-name','nd-mec','nd-spec','nd-ind','nd-adv','nd-contra','nd-tip','nd-tags'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('nd-common').checked=false;
+    Array.from(document.querySelectorAll('#nd-doses-wrap .dose-row-input')).slice(1).forEach(r => r.remove());
+    document.querySelectorAll('#nd-doses-wrap input').forEach(i => i.value='');
+  };
+
+  function updateNav(slug, name){
+    var nav = document.querySelector('.nav');
+    if(!nav || nav.querySelector('a[href="#'+slug+'"]')) return;
+    var a = document.createElement('a'); a.href = '#' + slug; a.textContent = name;
+    nav.appendChild(a);
+  }
+  function addClassToSelect(slug, name){
+    var sel = document.getElementById('nd-class');
+    if(!sel) return;
+    for(var i=0; i<sel.options.length; i++){ if(sel.options[i].value === slug) return; }
+    var newOpt = document.createElement('option'); newOpt.value = slug; newOpt.textContent = name;
+    sel.insertBefore(newOpt, sel.options[sel.options.length - 2]);
+  }
+
+  function loadCustomClasses(){
+    var classes = JSON.parse(localStorage.getItem('vadecum_custom_classes') || '[]');
+    classes.forEach(function(c){
+      if(!document.getElementById(c.slug)){
+        var hdr = document.createElement('div'); hdr.id = c.slug; hdr.className = 'section-header navy'; hdr.style.marginTop = '36px'; hdr.innerHTML = '<h2>' + c.name + '</h2>';
+        var quickref = document.getElementById('quickref');
+        if(quickref) quickref.parentNode.insertBefore(hdr, quickref);
+        else document.querySelector('.container').appendChild(hdr);
+      }
+      updateNav(c.slug, c.name); addClassToSelect(c.slug, c.name);
+    });
+  }
+
+  function loadCustomSubclasses(){
+    var subs = JSON.parse(localStorage.getItem('vadecum_custom_subclasses') || '[]');
+    subs.forEach(function(sub){
+      if(document.getElementById(sub.id)) return;
+      var tmp = document.createElement('div'); tmp.innerHTML = sub.html;
+      var hdr = tmp.firstElementChild; if(!hdr) return;
+      var parent = document.getElementById(sub.parentId);
+      var insertAfter = null;
+      if (parent) {
+        var el = parent.nextElementSibling;
+        while (el && !el.classList.contains('navy')) {
+          insertAfter = el; el = el.nextElementSibling;
+        }
+        if (insertAfter) insertAfter.after(hdr);
+        else parent.after(hdr);
+      } else { document.querySelector('.container').appendChild(hdr); }
+    });
+  }
+
+  function loadCustomDrugs() {
+    var stored = JSON.parse(localStorage.getItem('vadecum_custom_drugs') || '[]');
+    stored.forEach(function(item) {
+      if (document.getElementById(item.id)) return;
+      var tmp = document.createElement('div'); tmp.innerHTML = item.html;
+      var card = tmp.firstElementChild; if (!card) return;
+      card.id = item.id; card.setAttribute('data-custom', '1');
+
+      var anchor = document.getElementById(item.section);
+      var insertAfter = null;
+      if (anchor) {
+        var el = anchor.nextElementSibling;
+        while (el && !el.classList.contains('section-header')) {
+          if (el.classList.contains('drug-card') || el.classList.contains('section-intro')) insertAfter = el;
+          el = el.nextElementSibling;
+        }
+      }
+      if (insertAfter) insertAfter.after(card);
+      else if (anchor) anchor.after(card);
+      else document.querySelector('.container').appendChild(card);
+
+      window._assignKeys(card);
+    });
+  }
+
+  window.addDoseRow = function(){
+    var wrap = document.getElementById('nd-doses-wrap');
+    var row = document.createElement('div'); row.className = 'dose-row-input';
+    row.innerHTML = '<input type="text" placeholder="Indicação" class="dr-ind"/> <input type="text" placeholder="Dose" style="max-width:90px" class="dr-dose"/> <input type="text" placeholder="Via" style="max-width:60px" class="dr-via"/> <input type="text" placeholder="Intervalo" style="max-width:100px" class="dr-int"/> <input type="text" placeholder="Ajuste renal" class="dr-renal"/> <button onclick="this.parentNode.remove()">✕</button>';
+    wrap.appendChild(row);
+  };
+
+  // INICIALIZAÇÃO E TEXT COLOR LOGIC
+  var _tcSavedRange = null, _tcSavedEditEl = null;
+  document.addEventListener('mousedown', function(e){
+    var wrap = document.getElementById('color-picker-wrap');
+    if(!wrap || !wrap.contains(e.target)) return;
+    var sel = window.getSelection();
+    if(sel && !sel.isCollapsed){
+      var range = sel.getRangeAt(0); var ancestor = range.commonAncestorContainer;
+      var el = ancestor.nodeType === 3 ? ancestor.parentElement : ancestor;
+      while(el){ if(el.getAttribute && el.getAttribute('contenteditable') === 'true'){ _tcSavedRange = range.cloneRange(); _tcSavedEditEl = el; break; } el = el.parentElement; }
+    }
+  }, true);
+
+  window.applyTextColor = function(color, swatchEl){
+    document.querySelectorAll('.tc-swatch').forEach(s => s.classList.remove('selected-tc'));
+    if(swatchEl) swatchEl.classList.add('selected-tc');
+    var range = _tcSavedRange, editEl = _tcSavedEditEl; _tcSavedRange = null; _tcSavedEditEl = null;
+    if(!range || !editEl){
+      var sel = window.getSelection();
+      if(sel && !sel.isCollapsed){
+        range = sel.getRangeAt(0); var ancestor = range.commonAncestorContainer;
+        var el = ancestor.nodeType === 3 ? ancestor.parentElement : ancestor;
+        while(el){ if(el.getAttribute && el.getAttribute('contenteditable') === 'true'){ editEl = el; break; } el = el.parentElement; }
+      }
+    }
+    if(!range || !editEl){ alert('Selecione um texto dentro de um campo editável (Modo Edição ativo).'); return; }
+    editEl.focus();
+    var sel2 = window.getSelection(); sel2.removeAllRanges(); sel2.addRange(range);
+    document.execCommand('styleWithCSS', false, true);
+    if(color) document.execCommand('foreColor', false, color);
+    else document.execCommand('removeFormat', false, null);
+    setTimeout(window.saveEdits, 120);
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    loadCustomClasses();
+    loadCustomSubclasses(); // <-- Adiciona dinamicamente as subclasses customizadas 
+    loadCustomDrugs();
+    setTimeout(() => { window._assignKeys(document); applyEdits(); }, 150);
+  });
+})();
+
+// ===================== HIGHLIGHTER CORRIGIDO (FINAL) =====================
+(function() {
+  var HL_STORE_KEY = 'vadecum_highlights_v4';
+  var DEFAULT_COLOR = 'hl-yellow';   // cor padrão ao selecionar com modo ativo
+  var toolbar = document.getElementById('hl-toolbar');
+  var hlMode = false;               // modo de criação ativado?
+  var currentSelection = null;      // armazena a seleção atual (Range)
+
+  if (!toolbar) return;
+
+  // ---------- UTILITÁRIOS ----------
+  function getXPath(element) {
+    if (element.id) return '//*[@id="' + element.id + '"]';
+    if (element === document.body) return '/html/body';
+    var index = 1;
+    var siblings = element.parentNode.childNodes;
+    for (var i = 0; i < siblings.length; i++) {
+      var sibling = siblings[i];
+      if (sibling === element) break;
+      if (sibling.nodeType === 1 && sibling.tagName === element.tagName) index++;
+    }
+    var tagName = element.tagName.toLowerCase();
+    var parentPath = getXPath(element.parentNode);
+    return parentPath + '/' + tagName + '[' + index + ']';
+  }
+
+  function getElementByXPath(xpath) {
+    return document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  }
+
+  // Remove todos os <mark> que intersectam um Range, substituindo pelo seu conteúdo
+  function removeMarksFromRange(range) {
+    var marks = document.querySelectorAll('mark.hl');
+    marks.forEach(function(mark) {
+      if (range.intersectsNode(mark)) {
+        var parent = mark.parentNode;
+        while (mark.firstChild) {
+          parent.insertBefore(mark.firstChild, mark);
+        }
+        parent.removeChild(mark);
+        parent.normalize();
+      }
+    });
+  }
+
+  // Aplica um <mark> com determinada classe num range já clonado (sem depender da seleção ativa)
+  // Retorna true se sucesso, false se falhar
+  function applyMarkToRange(range, className) {
+    if (!range || range.collapsed) return false;
+
+    // 1. Remove todas as marcações existentes dentro do range (evita acúmulo)
+    removeMarksFromRange(range);
+
+    // 2. Recria o range idêntico (removeMarksFromRange pode alterar o DOM)
+    //    Usamos o range já clonado que foi passado como parâmetro — reaplica via seleção temporária
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    var freshRange = sel.getRangeAt(0).cloneRange();
+
+    // 3. Tenta envolver o conteúdo com a tag <mark>
+    try {
+      var mark = document.createElement('mark');
+      mark.className = 'hl ' + className;
+      freshRange.surroundContents(mark);
+      sel.removeAllRanges();
+      return true;
+    } catch (e) {
+      // Fallback: se falhar (ex: seleção cruza elementos), usa um método alternativo
+      try {
+        var contents = freshRange.extractContents();
+        var mark2 = document.createElement('mark');
+        mark2.className = 'hl ' + className;
+        mark2.appendChild(contents);
+        freshRange.insertNode(mark2);
+        sel.removeAllRanges();
+        return true;
+      } catch (e2) {
+        console.warn('Falha ao aplicar marcação:', e2);
+        sel.removeAllRanges();
+        return false;
+      }
+    }
+  }
+
+  // Aplica a cor padrão imediatamente ao selecionar (modo ativo)
+  function applyDefaultHighlight(range) {
+    var cloned = range.cloneRange();
+    var success = applyMarkToRange(cloned, DEFAULT_COLOR);
+    if (success) {
+      saveHighlightsToLocalStorage();
+    }
+    return success;
+  }
+
+  // Aplica uma nova cor (substitui a anterior) — chamado pelos botões da toolbar
+  function applyHighlight(colorClass) {
+    if (!currentSelection) {
+      hideToolbar();
+      return;
+    }
+
+    // Caso especial: se a seleção está inteiramente dentro de um único <mark.hl>,
+    // apenas troca a classe — evita destruir o DOM e perder o range.
+    var container = currentSelection.commonAncestorContainer;
+    var existingMark = (container.nodeType === 3 ? container.parentElement : container).closest('mark.hl');
+    if (existingMark) {
+      // Troca só a classe de cor, preservando o elemento
+      existingMark.className = 'hl ' + colorClass;
+      saveHighlightsToLocalStorage();
+      // Mantém a toolbar aberta com o range atualizado para permitir novas trocas
+      var markRange = document.createRange();
+      markRange.selectNodeContents(existingMark);
+      currentSelection = markRange;
+      showToolbar(markRange);
+      return;
+    }
+
+    var range = currentSelection.cloneRange();
+    var success = applyMarkToRange(range, colorClass);
+    if (success) {
+      saveHighlightsToLocalStorage();
+    }
+    // Limpa a seleção e esconde a toolbar
+    window.getSelection().removeAllRanges();
+    hideToolbar();
+  }
+
+  // Apaga todas as marcações na área selecionada
+  function eraseHighlights() {
+    if (!currentSelection) {
+      hideToolbar();
+      return;
+    }
+    var range = currentSelection.cloneRange();
+    removeMarksFromRange(range);
+    window.getSelection().removeAllRanges();
+    hideToolbar();
+    saveHighlightsToLocalStorage();
+  }
+
+  // ---------- PERSISTÊNCIA ----------
+  function saveHighlightsToLocalStorage() {
+    var highlights = [];
+    document.querySelectorAll('mark.hl').forEach(function(mark) {
+      var xpath = getXPath(mark);
+      highlights.push({
+        xpath: xpath,
+        class: mark.className,
+        text: mark.textContent
+      });
+    });
+    localStorage.setItem(HL_STORE_KEY, JSON.stringify(highlights));
+  }
+
+  function restoreHighlightsFromLocalStorage() {
+    var saved = localStorage.getItem(HL_STORE_KEY);
+    if (!saved) return;
+    try {
+      var highlights = JSON.parse(saved);
+      highlights.forEach(function(h) {
+        var element = getElementByXPath(h.xpath);
+        if (element && element.textContent === h.text) {
+          element.className = h.class;
+        }
+      });
+    } catch(e) {}
+  }
+
+  // ---------- CONTROLE DA TOOLBAR ----------
+  function showToolbar(range) {
+    var rect = range.getBoundingClientRect();
+    var tw = toolbar.offsetWidth || 220;
+    var left = rect.left + rect.width/2 - tw/2;
+    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+    toolbar.style.left = (left + window.scrollX) + 'px';
+    toolbar.style.top  = (rect.top + window.scrollY - 52) + 'px';
+    toolbar.style.position = 'absolute';
+    toolbar.classList.add('visible');
+  }
+
+  function hideToolbar() {
+    toolbar.classList.remove('visible');
+    currentSelection = null;
+  }
+
+  // ---------- EVENTOS ----------
+  // Quando o modo está ATIVO: selecionar texto aplica cor padrão imediatamente e mostra toolbar
+  document.addEventListener('mouseup', function(e) {
+    if (toolbar.contains(e.target)) return;
+    if (hlMode) {
+      var sel = window.getSelection();
+      if (sel && !sel.isCollapsed && sel.toString().trim().length > 0) {
+        var range = sel.getRangeAt(0).cloneRange();
+        // Aplica a cor padrão imediatamente
+        applyDefaultHighlight(range);
+        // Após aplicar, localiza o <mark> recém-criado para usar como âncora da toolbar
+        // e armazena uma seleção sobre ele
+        var newMark = null;
+        // Pequena busca: procura o mark mais recente cujo texto coincide com o selecionado
+        var selectedText = range.toString().trim();
+        document.querySelectorAll('mark.hl').forEach(function(m) {
+          if (m.textContent.trim() === selectedText) newMark = m;
+        });
+        if (newMark) {
+          var markRange = document.createRange();
+          markRange.selectNodeContents(newMark);
+          currentSelection = markRange;
+          showToolbar(markRange);
+        }
+      } else {
+        hideToolbar();
+      }
+    }
+  });
+
+  // Clicar sobre um texto marcado exibe a toolbar (funciona com o modo ATIVO ou DESATIVADO)
+  document.addEventListener('click', function(e) {
+    if (toolbar.contains(e.target)) return;
+    var mark = e.target.closest('mark.hl');
+    if (mark) {
+      // Seleciona o conteúdo do mark
+      var range = document.createRange();
+      range.selectNodeContents(mark);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      currentSelection = range;
+      showToolbar(currentSelection);
+      e.stopPropagation();
+    } else if (!hlMode) {
+      hideToolbar();
+    }
+  });
+
+  // Impede que a toolbar seja escondida ao clicar dentro dela
+  toolbar.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+  });
+
+  // ---------- FUNÇÕES GLOBAIS (chamadas pelos botões) ----------
+  window.hlApply = function(colorClass) {
+    applyHighlight(colorClass);
+  };
+
+  window.hlErase = function() {
+    eraseHighlights();
+  };
+
+  window.toggleHlMode = function() {
+    hlMode = !hlMode;
+    document.body.classList.toggle('hl-mode', hlMode);
+    var btn = document.getElementById('hl-mode-btn');
+    if (btn) btn.classList.toggle('active', hlMode);
+    if (!hlMode) hideToolbar();
+  };
+
+  // ---------- INICIALIZAÇÃO ----------
+  document.addEventListener('DOMContentLoaded', function() {
+    restoreHighlightsFromLocalStorage();
+    var btn = document.getElementById('hl-mode-btn');
+    if (btn) btn.classList.remove('active');
+  });
+})();
+(function() {
+  var DRUG_COLLAPSE_KEY = 'vadecum_collapsed_drugs';
+
+  function getCollapsedDrugs() {
+    try { return JSON.parse(localStorage.getItem(DRUG_COLLAPSE_KEY) || '{}'); }
+    catch(e) { return {}; }
+  }
+
+  function saveCollapsedDrugs(state) {
+    try { localStorage.setItem(DRUG_COLLAPSE_KEY, JSON.stringify(state)); }
+    catch(e) {}
+  }
+
+  function toggleDrugCard(card) {
+    if (!card) return;
+    var isCollapsed = card.classList.contains('collapsed');
+    var drugId = card.id;
+    
+    if (isCollapsed) {
+      card.classList.remove('collapsed');
+    } else {
+      card.classList.add('collapsed');
+    }
+    
+    if (drugId) {
+      var state = getCollapsedDrugs();
+      if (card.classList.contains('collapsed')) {
+        state[drugId] = true;
+      } else {
+        delete state[drugId];
+      }
+      saveCollapsedDrugs(state);
+    }
+  }
+
+  function initDrugCollapse(card) {
+    // Evita adicionar o ícone de colapso nos painéis curtos de introdução
+    if (card.classList.contains('section-intro-card') || card.querySelector('.section-intro')) return;
+    if (card.querySelector('.drug-card-collapse-icon')) return;
+
+    var header = card.querySelector('.drug-header');
+    if (!header) return;
+
+    var icon = document.createElement('span');
+    icon.className = 'drug-card-collapse-icon';
+    icon.innerHTML = '▼';
+    icon.title = 'Colapsar/Expandir fármaco';
+
+    // Evento de clique direto no ícone (▼)
+    icon.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleDrugCard(card);
+    });
+
+    // Torna toda a barra de título do fármaco clicável para facilitar o uso
+    header.style.cursor = 'pointer';
+    header.addEventListener('click', function(e) {
+      // Impede o colapso caso o usuário esteja clicando para editar o texto ou apagar o card
+      if (e.target.hasAttribute('data-editable') || e.target.closest('.delete-drug-btn')) return;
+      toggleDrugCard(card);
+    });
+
+    header.appendChild(icon);
+  }
+
+  function applyDrugStates() {
+    var state = getCollapsedDrugs();
+    document.querySelectorAll('.drug-card').forEach(function(card) {
+      if (card.id && state[card.id] === true) {
+        card.classList.add('collapsed');
+      } else {
+        card.classList.remove('collapsed');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.drug-card').forEach(initDrugCollapse);
+    applyDrugStates();
+  });
+
+  // Observador para adicionar o ícone a novos cards criados dinamicamente (Modo Edição)
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1 && node.classList && node.classList.contains('drug-card')) {
+          initDrugCollapse(node);
+          var state = getCollapsedDrugs();
+          if (node.id && state[node.id]) node.classList.add('collapsed');
+        }
+      });
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  // Sincronizar os cards individuais com os botões globais da barra superior
+  var originalExpand = window.expandAllSections;
+  window.expandAllSections = function() {
+    if(originalExpand) originalExpand();
+    document.querySelectorAll('.drug-card').forEach(function(c) { c.classList.remove('collapsed'); });
+    saveCollapsedDrugs({});
+  };
+
+  var originalCollapse = window.collapseAllSections;
+  window.collapseAllSections = function() {
+    if(originalCollapse) originalCollapse();
+    var state = {};
+    document.querySelectorAll('.drug-card').forEach(function(card) {
+      if (!card.querySelector('.section-intro')) {
+        card.classList.add('collapsed');
+        if (card.id) state[card.id] = true;
+      }
+    });
+    saveCollapsedDrugs(state);
+  };
+
+})();
+
+</script>
+
+</body>
+</html>
